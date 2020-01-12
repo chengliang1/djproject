@@ -32,6 +32,11 @@ public interface RoleService {
     Boolean existsUserOk(Long id);
 
     /**
+     * 判断角色的name属于管理员还是用户组
+     * @param id 用户ID
+     */
+
+    /**
      * 根据角色ID查询角色数据
      * @param id 角色ID
      * @return 角色信息
