@@ -40,4 +40,13 @@ public interface UserRepository extends BaseRepository<User, Long>, JpaSpecifica
      * @return 影响行数
      */
     public Integer deleteByIdIn(List<Long> ids);
+
+   /* *//**
+     * 小程序登录
+     * @param username
+     * @param password
+     * @return
+     *//*
+
+    User programLogin(String username, String password);*/
 }

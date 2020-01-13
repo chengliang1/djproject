@@ -3,6 +3,7 @@ package com.linln.modules.system.service.impl;
 import com.linln.common.data.PageSort;
 import com.linln.common.enums.StatusEnum;
 import com.linln.modules.system.domain.Role;
+import com.linln.modules.system.domain.User;
 import com.linln.modules.system.repository.RoleRepository;
 import com.linln.modules.system.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -111,4 +112,6 @@ public class RoleServiceImpl implements RoleService {
         }
         return roleRepository.updateStatus(statusEnum.getCode(), ids) > 0;
     }
+
+
 }

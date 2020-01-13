@@ -1,23 +1,20 @@
 package com.linln.admin.system.controller;
 
-import com.linln.common.config.properties.ProjectProperties;
 import com.linln.common.data.URL;
 import com.linln.common.enums.ResultEnum;
 import com.linln.common.exception.ResultException;
-import com.linln.common.utils.CaptchaUtil;
 import com.linln.common.utils.ResultVoUtil;
-import com.linln.common.utils.SpringContextUtil;
 import com.linln.common.vo.ResultVo;
 import com.linln.component.actionLog.action.UserAction;
 import com.linln.component.actionLog.annotation.ActionLog;
 import com.linln.component.shiro.ShiroUtil;
 import com.linln.modules.system.domain.User;
 import com.linln.modules.system.service.RoleService;
+import com.linln.modules.system.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorController;
@@ -29,10 +26,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 /**
 
@@ -43,6 +37,9 @@ public class LoginController implements ErrorController {
 
     @Autowired
     private RoleService roleService;
+
+
+
 
     /**
      * 跳转到登录页面
@@ -109,6 +106,21 @@ public class LoginController implements ErrorController {
             return ResultVoUtil.error("用户名或密码错误");
         }
     }
+
+   /* *//**
+     * 小程序登录
+     * @return
+     *//*
+    @PostMapping("/programlogin")
+    public  boolean  programLogin(String username,String password){
+        System.out.println("微信小程序调用接口："+"用户名"+username+"密码"+password);
+        boolean login = userService.programLogin(username,password);
+        if (login){
+            return true;
+        }
+        return false;
+
+    }*/
 
    /* *//**
      * 验证码图片

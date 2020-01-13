@@ -63,4 +63,12 @@ public interface UserService {
      */
     @Transactional
     Boolean updateStatus(StatusEnum statusEnum, List<Long> idList);
+
+    /**
+     * 小程序登录
+     * @param username
+     * @param password
+     * @return
+     *//*
+    boolean programLogin(String username, String password);*/
 }

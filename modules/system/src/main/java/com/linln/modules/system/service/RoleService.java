@@ -80,4 +80,7 @@ public interface RoleService {
      */
     @Transactional
     Boolean updateStatus(StatusEnum statusEnum, List<Long> idList);
+
+
+
 }
