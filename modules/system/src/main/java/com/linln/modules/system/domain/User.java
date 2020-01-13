@@ -49,6 +49,8 @@ public class User implements Serializable {
     private String phone;
     @Excel("电子邮箱")
     private String email;
+    @Excel("余额")
+    private String balance;
     @CreatedDate
     @Excel("创建时间")
     private Date createDate;
