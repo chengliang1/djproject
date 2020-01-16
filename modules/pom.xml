@@ -7,6 +7,20 @@
     <artifactId>modules</artifactId>
     <packaging>pom</packaging>
     <name>业务模块</name>
+    <dependencies>
+        <dependency>
+            <groupId>com.linln</groupId>
+            <artifactId>common</artifactId>
+            <version>2.0.2</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
     <parent>
         <artifactId>djproject</artifactId>
@@ -16,5 +30,6 @@
 
     <modules>
         <module>system</module>
+        <module>driverinformation</module>
     </modules>
 </project>

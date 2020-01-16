@@ -6,6 +6,17 @@
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/modules/aaa/pom.xml" />
+        <option value="$PROJECT_DIR$/modules/bbb/pom.xml" />
+        <option value="$PROJECT_DIR$/modules/day/pom.xml" />
+        <option value="$PROJECT_DIR$/modules/driver/pom.xml" />
+        <option value="$PROJECT_DIR$/modules/drivers/pom.xml" />
+        <option value="$PROJECT_DIR$/modules/qqq/pom.xml" />
+        <option value="$PROJECT_DIR$/modules/test/pom.xml" />
+      </set>
+    </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_10" project-jdk-name="10" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/classes" />

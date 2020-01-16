@@ -1,9 +1,12 @@
 package com.linln.admin.system.controller;
 
+import com.linln.common.config.properties.ProjectProperties;
 import com.linln.common.data.URL;
 import com.linln.common.enums.ResultEnum;
 import com.linln.common.exception.ResultException;
+import com.linln.common.utils.CaptchaUtil;
 import com.linln.common.utils.ResultVoUtil;
+import com.linln.common.utils.SpringContextUtil;
 import com.linln.common.vo.ResultVo;
 import com.linln.component.actionLog.action.UserAction;
 import com.linln.component.actionLog.annotation.ActionLog;
@@ -15,6 +18,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorController;
@@ -26,7 +30,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
 
@@ -46,8 +53,8 @@ public class LoginController implements ErrorController {
      */
     @GetMapping("/login")
     public String toLogin(Model model) {
-        /*ProjectProperties properties = SpringContextUtil.getBean(ProjectProperties.class);
-        model.addAttribute("isCaptcha", properties.isCaptchaOpen());*/
+        ProjectProperties properties = SpringContextUtil.getBean(ProjectProperties.class);
+        model.addAttribute("isCaptcha", properties.isCaptchaOpen());
         return "/login";
     }
 
@@ -64,7 +71,7 @@ public class LoginController implements ErrorController {
             throw new ResultException(ResultEnum.USER_NAME_PWD_NULL);
         }
 
-       /* // 判断验证码是否正确
+        // 判断验证码是否正确
         ProjectProperties properties = SpringContextUtil.getBean(ProjectProperties.class);
         if (properties.isCaptchaOpen()) {
             Session session = SecurityUtils.getSubject().getSession();
@@ -74,7 +81,7 @@ public class LoginController implements ErrorController {
                 throw new ResultException(ResultEnum.USER_CAPTCHA_ERROR);
             }
             session.removeAttribute("captcha");
-        }*/
+        }
 
         // 1.获取Subject主体对象
         Subject subject = SecurityUtils.getSubject();
@@ -122,9 +129,9 @@ public class LoginController implements ErrorController {
 
     }*/
 
-   /* *//**
+   /**
      * 验证码图片
-     *//*
+     */
     @GetMapping("/captcha")
     public void captcha(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //设置响应头信息，通知浏览器不要缓存
@@ -139,7 +146,7 @@ public class LoginController implements ErrorController {
         request.getSession().setAttribute("captcha", code);
         // 输出到web页面
         ImageIO.write(CaptchaUtil.genCaptcha(code), "jpg", response.getOutputStream());
-    }*/
+    }
 
     /**
      * 退出登录

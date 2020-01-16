@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -10,6 +11,7 @@
         <module name="admin" />
         <module name="common" />
         <module name="devtools" />
+        <module name="driverinformation" />
         <module name="excel" />
         <module name="fileUpload" />
         <module name="jwt" />
@@ -19,32 +21,46 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="aaa" target="1.8" />
       <module name="actionLog" target="1.8" />
       <module name="admin" target="1.8" />
+      <module name="bbb" target="1.8" />
       <module name="common" target="1.8" />
       <module name="component" target="1.8" />
+      <module name="day" target="1.8" />
       <module name="devtools" target="1.8" />
       <module name="djproject" target="1.8" />
+      <module name="driver" target="1.8" />
+      <module name="driverinformation" target="1.8" />
       <module name="excel" target="1.8" />
       <module name="fileUpload" target="1.8" />
       <module name="jwt" target="1.8" />
       <module name="modules" target="1.8" />
+      <module name="qqq" target="1.8" />
       <module name="shiro" target="1.8" />
       <module name="system" target="1.8" />
+      <module name="test" target="1.8" />
       <module name="thymeleaf" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="aaa" options="-parameters" />
       <module name="actionLog" options="-parameters" />
       <module name="admin" options="-parameters" />
+      <module name="bbb" options="-parameters" />
       <module name="common" options="-parameters" />
+      <module name="day" options="-parameters" />
       <module name="devtools" options="-parameters" />
+      <module name="driver" options="-parameters" />
+      <module name="driverinformation" options="-parameters" />
       <module name="excel" options="-parameters" />
       <module name="fileUpload" options="-parameters" />
       <module name="jwt" options="-parameters" />
+      <module name="qqq" options="-parameters" />
       <module name="shiro" options="-parameters" />
       <module name="system" options="-parameters" />
+      <module name="test" options="-parameters" />
       <module name="thymeleaf" options="-parameters" />
     </option>
   </component>

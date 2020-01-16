@@ -12,7 +12,7 @@ public class RegisterController {
      */
     @GetMapping("/register")
     public String toLogin(Model model) {
-//        model.addAttribute("isCaptcha", false);
+        model.addAttribute("isCaptcha", false);
         return "/register";
     }
 }

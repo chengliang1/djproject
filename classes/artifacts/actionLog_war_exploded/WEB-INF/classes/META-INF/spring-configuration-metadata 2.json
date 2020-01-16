@@ -1,51 +1,39 @@
 {
   "groups": [
     {
-      "name": "project",
-      "type": "com.linln.common.config.properties.ProjectProperties",
-      "sourceType": "com.linln.common.config.properties.ProjectProperties"
-    },
-    {
-      "name": "project.xxs",
-      "type": "com.linln.common.config.properties.ProjectProperties$Xxs",
-      "sourceType": "com.linln.common.config.properties.ProjectProperties"
+      "name": "project.shiro",
+      "type": "com.linln.component.shiro.config.properties.ShiroProjectProperties",
+      "sourceType": "com.linln.component.shiro.config.properties.ShiroProjectProperties"
     }
   ],
   "properties": [
     {
-      "name": "project.captcha-open",
-      "type": "java.lang.Boolean",
-      "description": "是否开启验证码",
-      "sourceType": "com.linln.common.config.properties.ProjectProperties",
-      "defaultValue": false
-    },
-    {
-      "name": "project.xxs.default-excludes",
+      "name": "project.shiro.excludes",
       "type": "java.lang.String",
-      "description": "默认忽略规则（无需修改）",
-      "sourceType": "com.linln.common.config.properties.ProjectProperties$Xxs",
-      "defaultValue": "\/favicon.ico,\/img\/*,\/js\/*,\/css\/*,\/lib\/*"
-    },
-    {
-      "name": "project.xxs.enabled",
-      "type": "java.lang.Boolean",
-      "description": "xss防护开关",
-      "sourceType": "com.linln.common.config.properties.ProjectProperties$Xxs",
-      "defaultValue": true
-    },
-    {
-      "name": "project.xxs.excludes",
-      "type": "java.lang.String",
-      "description": "忽略规则，可通过“,”隔开多个",
-      "sourceType": "com.linln.common.config.properties.ProjectProperties$Xxs",
+      "description": "忽略的路径规则，多个规则使用\",\"逗号隔开",
+      "sourceType": "com.linln.component.shiro.config.properties.ShiroProjectProperties",
       "defaultValue": ""
     },
     {
-      "name": "project.xxs.url-patterns",
-      "type": "java.lang.String",
-      "description": "拦截规则，可通过“,”隔开多个",
-      "sourceType": "com.linln.common.config.properties.ProjectProperties$Xxs",
-      "defaultValue": "\/*"
+      "name": "project.shiro.global-session-timeout",
+      "type": "java.lang.Integer",
+      "description": "Session会话超时时间，默认30分钟",
+      "sourceType": "com.linln.component.shiro.config.properties.ShiroProjectProperties",
+      "defaultValue": 1800
+    },
+    {
+      "name": "project.shiro.remember-me-timeout",
+      "type": "java.lang.Integer",
+      "description": "cookie记住登录信息时间，默认7天",
+      "sourceType": "com.linln.component.shiro.config.properties.ShiroProjectProperties",
+      "defaultValue": 7
+    },
+    {
+      "name": "project.shiro.session-validation-interval",
+      "type": "java.lang.Integer",
+      "description": "Session会话检测间隔时间，默认15分钟",
+      "sourceType": "com.linln.component.shiro.config.properties.ShiroProjectProperties",
+      "defaultValue": 900
     }
   ],
   "hints": []

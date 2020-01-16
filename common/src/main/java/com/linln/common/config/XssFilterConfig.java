@@ -15,7 +15,7 @@ import java.util.Map;
 
  * @date 12/9
  */
-//@Configuration
+@Configuration
 public class XssFilterConfig {
     private static final int FILTER_ORDER = 1;
 
