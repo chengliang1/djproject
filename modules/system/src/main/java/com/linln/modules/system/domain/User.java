@@ -50,7 +50,7 @@ public class User implements Serializable {
     @Excel("电子邮箱")
     private String email;
     @Excel("余额")
-    private String balance;
+    private Integer balance;
     @CreatedDate
     @Excel("创建时间")
     private Date createDate;
@@ -61,6 +61,8 @@ public class User implements Serializable {
     private String remark;
     @Excel(value = "状态", dict = "DATA_STATUS")
     private Byte status = StatusEnum.OK.getCode();
+
+
 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="dept_id")

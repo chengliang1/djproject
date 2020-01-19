@@ -13,12 +13,6 @@
             <div class="layui-row timo-card-screen">
                 <div class="pull-left layui-form-pane timo-search-box">
                     <div class="layui-inline">
-                        <label class="layui-form-label">状态</label>
-                        <div class="layui-input-block timo-search-status">
-                            <select class="timo-search-select" name="status" mo:dict="SEARCH_STATUS" mo-selected="${param.status}"></select>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
                         <label class="layui-form-label">真实姓名</label>
                         <div class="layui-input-block">
                             <input type="text" name="name" th:value="${param.name}" placeholder="请输入真实姓名" autocomplete="off" class="layui-input">
@@ -39,14 +33,6 @@
                 <div class="pull-right screen-btn-group">
                     <button class="layui-btn open-popup" data-title="添加司机信息管理" th:attr="data-url=@{/driverinformation/drivers/add}" data-size="auto">
                         <i class="fa fa-plus"></i> 添加</button>
-                    <div class="btn-group">
-                        <button class="layui-btn">操作<span class="caret"></span></button>
-                        <dl class="layui-nav-child layui-anim layui-anim-upbit">
-                            <dd><a class="ajax-status" th:href="@{/driverinformation/drivers/status/ok}">启用</a></dd>
-                            <dd><a class="ajax-status" th:href="@{/driverinformation/drivers/status/freezed}">冻结</a></dd>
-                            <dd><a class="ajax-status" th:href="@{/driverinformation/drivers/status/delete}">删除</a></dd>
-                        </dl>
-                    </div>
                 </div>
             </div>
             <div class="timo-table-wrap">

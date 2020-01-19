@@ -146,26 +146,5 @@ public class UserServiceImpl implements UserService {
         return userRepository.updateStatus(statusEnum.getCode(), ids) > 0;
     }
 
-    /**
-     * 小程序登录
-     * @param username
-     * @param password
-     * @return
-     *//*
-    @Override
-    public boolean programLogin(String username, String password) {
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
 
-        User result  = userRepository.programLogin(username,password);
-
-        if (result != null){
-            return true;
-        }
-        else {
-            return false;
-        }
-
-    }*/
 }

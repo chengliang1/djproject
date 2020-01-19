@@ -1,0 +1,24 @@
+{
+  "groups": [
+    {
+      "name": "project",
+      "type": "com.linln.common.config.properties.ProjectProperties",
+      "sourceType": "com.linln.common.config.properties.ProjectProperties"
+    },
+    {
+      "name": "project.xxs",
+      "type": "com.linln.common.config.properties.ProjectProperties$Xxs",
+      "sourceType": "com.linln.common.config.properties.ProjectProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "project.captcha-open",
+      "type": "java.lang.Boolean",
+      "description": "是否开启验证码",
+      "sourceType": "com.linln.common.config.properties.ProjectProperties",
+      "defaultValue": false
+    }
+  ],
+  "hints": []
+}

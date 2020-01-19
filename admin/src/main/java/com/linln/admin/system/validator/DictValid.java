@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
-
  * @date 8/14
  */
 @Data

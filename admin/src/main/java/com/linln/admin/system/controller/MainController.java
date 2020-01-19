@@ -32,12 +32,12 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-/**
 
+/**
  * @date 8/14
  */
 @Controller
-public class MainController{
+public class MainController {
 
     @Autowired
     private UserService userService;
@@ -50,7 +50,7 @@ public class MainController{
      */
     @GetMapping("/")
     @RequiresPermissions("index")
-    public String main(Model model){
+    public String main(Model model) {
         // 获取当前登录的用户
         User user = ShiroUtil.getSubject();
 
@@ -58,14 +58,14 @@ public class MainController{
         Map<Long, Menu> keyMenu = new HashMap<>(16);
 
         // 管理员实时更新菜单
-        if(user.getId().equals(AdminConst.ADMIN_ID)){
+        if (user.getId().equals(AdminConst.ADMIN_ID)) {
             List<Menu> menus = menuService.getListBySortOk();
             menus.forEach(menu -> keyMenu.put(menu.getId(), menu));
-        }else{
+        } else {
             // 其他用户需从相应的角色中获取菜单资源
             user.getRoles().forEach(role -> {
                 role.getMenus().forEach(menu -> {
-                    if(menu.getStatus().equals(StatusEnum.OK.getCode())){
+                    if (menu.getStatus().equals(StatusEnum.OK.getCode())) {
                         keyMenu.put(menu.getId(), menu);
                     }
                 });
@@ -75,11 +75,11 @@ public class MainController{
         // 封装菜单树形数据
         Map<Long, Menu> treeMenu = new HashMap<>(16);
         keyMenu.forEach((id, menu) -> {
-            if(!menu.getType().equals(MenuTypeEnum.NOT_MENU.getCode())){
-                if(keyMenu.get(menu.getPid()) != null){
+            if (!menu.getType().equals(MenuTypeEnum.NOT_MENU.getCode())) {
+                if (keyMenu.get(menu.getPid()) != null) {
                     keyMenu.get(menu.getPid()).getChildren().put(Long.valueOf(menu.getSort()), menu);
-                }else{
-                    if(menu.getType().equals(MenuTypeEnum.TOP_LEVEL.getCode())){
+                } else {
+                    if (menu.getType().equals(MenuTypeEnum.TOP_LEVEL.getCode())) {
                         treeMenu.put(Long.valueOf(menu.getSort()), menu);
                     }
                 }
@@ -96,7 +96,7 @@ public class MainController{
      */
     @GetMapping("/index")
     @RequiresPermissions("index")
-    public String index(Model model){
+    public String index(Model model) {
         return "/system/main/index";
     }
 
@@ -106,7 +106,7 @@ public class MainController{
      */
     @GetMapping("/userInfo")
     @RequiresPermissions("index")
-    public String toUserInfo(Model model){
+    public String toUserInfo(Model model) {
         User user = ShiroUtil.getSubject();
         model.addAttribute("user", user);
         return "/system/main/userInfo";
@@ -118,16 +118,16 @@ public class MainController{
     @PostMapping("/userPicture")
     @RequiresPermissions("index")
     @ResponseBody
-    public ResultVo userPicture(@RequestParam("picture") MultipartFile picture){
+    public ResultVo userPicture(@RequestParam("picture") MultipartFile picture) {
         UploadController uploadController = SpringContextUtil.getBean(UploadController.class);
         ResultVo imageResult = uploadController.uploadPicture(picture);
-        if(imageResult.getCode().equals(ResultEnum.SUCCESS.getCode())){
+        if (imageResult.getCode().equals(ResultEnum.SUCCESS.getCode())) {
             User subject = ShiroUtil.getSubject();
             subject.setPicture(((Upload) imageResult.getData()).getPath());
             userService.save(subject);
             ShiroUtil.resetCookieRememberMe();
             return ResultVoUtil.SAVE_SUCCESS;
-        }else {
+        } else {
             return imageResult;
         }
     }
@@ -138,7 +138,7 @@ public class MainController{
     @PostMapping("/userInfo")
     @RequiresPermissions("index")
     @ResponseBody
-    public ResultVo userInfo(@Validated UserValid valid, User user){
+    public ResultVo userInfo(@Validated UserValid valid, User user) {
 
         // 复制保留无需修改的数据
         User subUser = ShiroUtil.getSubject();
@@ -157,7 +157,7 @@ public class MainController{
      */
     @GetMapping("/editPwd")
     @RequiresPermissions("index")
-    public String toEditPwd(){
+    public String toEditPwd() {
         return "/system/main/editPwd";
     }
 
@@ -167,7 +167,7 @@ public class MainController{
     @PostMapping("/editPwd")
     @RequiresPermissions("index")
     @ResponseBody
-    public ResultVo editPwd(String original, String password, String confirm){
+    public ResultVo editPwd(String original, String password, String confirm) {
         // 判断原来密码是否有误
         User subUser = ShiroUtil.getSubject();
         String oldPwd = ShiroUtil.encrypt(original, subUser.getSalt());

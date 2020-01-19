@@ -26,7 +26,7 @@ public class ActionLogController {
      */
     @GetMapping("/index")
     @RequiresPermissions("system:actionLog:index")
-    public String index(Model model, ActionLog actionLog){
+    public String index(Model model, ActionLog actionLog) {
 
         // 创建匹配器，进行动态查询匹配
         ExampleMatcher matcher = ExampleMatcher.matching();
@@ -36,8 +36,8 @@ public class ActionLogController {
         Page<ActionLog> list = actionLogService.getPageList(example);
 
         // 封装数据
-        model.addAttribute("list",list.getContent());
-        model.addAttribute("page",list);
+        model.addAttribute("list", list.getContent());
+        model.addAttribute("page", list);
         return "/system/actionLog/index";
     }
 
@@ -46,8 +46,8 @@ public class ActionLogController {
      */
     @GetMapping("/detail/{id}")
     @RequiresPermissions("system:actionLog:detail")
-    public String toDetail(@PathVariable("id") ActionLog actionLog, Model model){
-        model.addAttribute("actionLog",actionLog);
+    public String toDetail(@PathVariable("id") ActionLog actionLog, Model model) {
+        model.addAttribute("actionLog", actionLog);
         return "/system/actionLog/detail";
     }
 
@@ -58,11 +58,11 @@ public class ActionLogController {
     @RequiresPermissions("system:actionLog:delete")
     @ResponseBody
     public ResultVo delete(
-            @RequestParam(value = "ids", required = false) Long id){
-        if (id != null){
+            @RequestParam(value = "ids", required = false) Long id) {
+        if (id != null) {
             actionLogService.deleteId(id);
             return ResultVoUtil.success("删除日志成功");
-        }else {
+        } else {
             actionLogService.emptyLog();
             return ResultVoUtil.success("清空日志成功");
         }

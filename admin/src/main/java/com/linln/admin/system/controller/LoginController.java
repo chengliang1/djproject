@@ -30,13 +30,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+
 
 /**
-
  * @date 8/14
  */
 @Controller
@@ -44,8 +41,6 @@ public class LoginController implements ErrorController {
 
     @Autowired
     private RoleService roleService;
-
-
 
 
     /**
@@ -71,7 +66,7 @@ public class LoginController implements ErrorController {
             throw new ResultException(ResultEnum.USER_NAME_PWD_NULL);
         }
 
-        // 判断验证码是否正确
+       /* // 判断验证码是否正确
         ProjectProperties properties = SpringContextUtil.getBean(ProjectProperties.class);
         if (properties.isCaptchaOpen()) {
             Session session = SecurityUtils.getSubject().getSession();
@@ -81,10 +76,11 @@ public class LoginController implements ErrorController {
                 throw new ResultException(ResultEnum.USER_CAPTCHA_ERROR);
             }
             session.removeAttribute("captcha");
-        }
+        }*/
 
         // 1.获取Subject主体对象
         Subject subject = SecurityUtils.getSubject();
+
 
         // 2.封装用户数据
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
@@ -114,24 +110,10 @@ public class LoginController implements ErrorController {
         }
     }
 
-   /* *//**
-     * 小程序登录
-     * @return
-     *//*
-    @PostMapping("/programlogin")
-    public  boolean  programLogin(String username,String password){
-        System.out.println("微信小程序调用接口："+"用户名"+username+"密码"+password);
-        boolean login = userService.programLogin(username,password);
-        if (login){
-            return true;
-        }
-        return false;
 
-    }*/
-
-   /**
+    /**
      * 验证码图片
-     */
+     *//*
     @GetMapping("/captcha")
     public void captcha(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //设置响应头信息，通知浏览器不要缓存
@@ -146,7 +128,7 @@ public class LoginController implements ErrorController {
         request.getSession().setAttribute("captcha", code);
         // 输出到web页面
         ImageIO.write(CaptchaUtil.genCaptcha(code), "jpg", response.getOutputStream());
-    }
+    }*/
 
     /**
      * 退出登录

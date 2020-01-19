@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 /**
-
  * @date 11/02
  */
 @Controller
@@ -70,7 +69,7 @@ public class UploadController {
                 "image/jpeg",
                 "image/png"
         };
-        if(!FileUpload.isContentType(multipartFile, types)){
+        if (!FileUpload.isContentType(multipartFile, types)) {
             throw new ResultException(UploadResultEnum.NO_FILE_TYPE);
         }
 

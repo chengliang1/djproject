@@ -33,7 +33,6 @@ import java.util.List;
 import java.util.Set;
 
 /**
-
  * @date 8/14
  */
 @Controller
@@ -51,7 +50,7 @@ public class RoleController {
      */
     @GetMapping("/index")
     @RequiresPermissions("system:role:index")
-    public String index(Model model, Role role){
+    public String index(Model model, Role role) {
 
         // 创建匹配器，进行动态查询匹配
         ExampleMatcher matcher = ExampleMatcher.matching().
@@ -72,7 +71,7 @@ public class RoleController {
      */
     @GetMapping("/add")
     @RequiresPermissions("system:role:add")
-    public String toAdd(){
+    public String toAdd() {
         return "/system/role/add";
     }
 
@@ -81,24 +80,25 @@ public class RoleController {
      */
     @GetMapping("/edit/{id}")
     @RequiresPermissions("system:role:edit")
-    public String toEdit(@PathVariable("id") Role role, Model model){
+    public String toEdit(@PathVariable("id") Role role, Model model) {
         model.addAttribute("role", role);
         return "/system/role/add";
     }
 
     /**
      * 保存添加/修改的数据
+     *
      * @param valid 验证对象
-     * @param role 实体对象
+     * @param role  实体对象
      */
     @PostMapping("/save")
     @RequiresPermissions({"system:role:add", "system:role:edit"})
     @ResponseBody
     @ActionLog(key = RoleAction.ROLE_SAVE, action = RoleAction.class)
-    public ResultVo save(@Validated RoleValid valid, @EntityParam Role role){
+    public ResultVo save(@Validated RoleValid valid, @EntityParam Role role) {
         // 不允许操作管理员角色数据
-        if (role.getId() !=null && role.getId().equals(AdminConst.ADMIN_ROLE_ID) &&
-                !ShiroUtil.getSubject().getId().equals(AdminConst.ADMIN_ID)){
+        if (role.getId() != null && role.getId().equals(AdminConst.ADMIN_ROLE_ID) &&
+                !ShiroUtil.getSubject().getId().equals(AdminConst.ADMIN_ID)) {
             throw new ResultException(ResultEnum.NO_ADMINROLE_AUTH);
         }
 
@@ -108,7 +108,7 @@ public class RoleController {
         }
 
         // 复制保留无需修改的数据
-        if(role.getId() != null){
+        if (role.getId() != null) {
             Role beRole = roleService.getById(role.getId());
             String[] fields = {"users", "menus"};
             EntityBeanUtil.copyProperties(beRole, role, fields);
@@ -124,7 +124,7 @@ public class RoleController {
      */
     @GetMapping("/auth")
     @RequiresPermissions("system:role:auth")
-    public String toAuth(@RequestParam(value = "ids") Long id, Model model){
+    public String toAuth(@RequestParam(value = "ids") Long id, Model model) {
         model.addAttribute("id", id);
         return "/system/role/auth";
     }
@@ -135,16 +135,16 @@ public class RoleController {
     @GetMapping("/authList")
     @RequiresPermissions("system:role:auth")
     @ResponseBody
-    public ResultVo authList(@RequestParam(value = "ids") Role role){
+    public ResultVo authList(@RequestParam(value = "ids") Role role) {
         // 获取指定角色权限资源
         Set<Menu> authMenus = role.getMenus();
         // 获取全部菜单列表
         List<Menu> list = menuService.getListBySortOk();
         // 融合两项数据
         list.forEach(menu -> {
-            if(authMenus.contains(menu)){
+            if (authMenus.contains(menu)) {
                 menu.setRemark("auth:true");
-            }else {
+            } else {
                 menu.setRemark("");
             }
         });
@@ -160,10 +160,10 @@ public class RoleController {
     @ActionLog(key = RoleAction.ROLE_AUTH, action = RoleAction.class)
     public ResultVo auth(
             @RequestParam(value = "id", required = true) Role role,
-            @RequestParam(value = "authId", required = false) HashSet<Menu> menus){
+            @RequestParam(value = "authId", required = false) HashSet<Menu> menus) {
         // 不允许操作管理员角色数据
         if (role.getId().equals(AdminConst.ADMIN_ROLE_ID) &&
-                !ShiroUtil.getSubject().getId().equals(AdminConst.ADMIN_ID)){
+                !ShiroUtil.getSubject().getId().equals(AdminConst.ADMIN_ID)) {
             throw new ResultException(ResultEnum.NO_ADMINROLE_AUTH);
         }
 
@@ -180,7 +180,7 @@ public class RoleController {
      */
     @GetMapping("/detail/{id}")
     @RequiresPermissions("system:role:detail")
-    public String toDetail(@PathVariable("id") Role role, Model model){
+    public String toDetail(@PathVariable("id") Role role, Model model) {
         model.addAttribute("role", role);
         return "/system/role/detail";
     }
@@ -190,7 +190,7 @@ public class RoleController {
      */
     @GetMapping("/userList/{id}")
     @RequiresPermissions("system:role:detail")
-    public String toUserList(@PathVariable("id") Role role, Model model){
+    public String toUserList(@PathVariable("id") Role role, Model model) {
         model.addAttribute("list", role.getUsers());
         return "/system/role/user_list";
     }
@@ -204,9 +204,9 @@ public class RoleController {
     @ActionLog(name = "角色状态", action = StatusAction.class)
     public ResultVo status(
             @PathVariable("param") String param,
-            @RequestParam(value = "ids", required = false) List<Long> ids){
+            @RequestParam(value = "ids", required = false) List<Long> ids) {
         // 不能修改超级管理员角色状态
-        if(ids.contains(AdminConst.ADMIN_ROLE_ID)){
+        if (ids.contains(AdminConst.ADMIN_ROLE_ID)) {
             throw new ResultException(ResultEnum.NO_ADMINROLE_STATUS);
         }
 

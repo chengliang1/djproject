@@ -44,7 +44,6 @@ import java.util.List;
 import java.util.Set;
 
 /**
-
  * @date 8/14
  */
 @Controller
@@ -95,8 +94,9 @@ public class UserController {
 
     /**
      * 保存添加/修改的数据
+     *
      * @param valid 验证对象
-     * @param user 实体对象
+     * @param user  实体对象
      */
     @PostMapping("/save")
     @RequiresPermissions({"system:user:add", "system:user:edit"})

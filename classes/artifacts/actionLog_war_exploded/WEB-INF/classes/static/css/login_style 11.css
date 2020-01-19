@@ -1,0 +1,289 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background:url("../images/bg.jpg");
+    background-size: cover;
+}
+
+.box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    padding: 40px;
+    background: rgba(0, 0, 0,.8);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.8);
+    border-radius: 10px;
+}
+
+/* 边框循环动画效果 */
+.box::before, .box::after{
+    content: '';
+    border: 2px solid rgba(52, 152, 219,0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: -5px;
+    /* clip: rect(top,right,bottom,left); */
+    /* clip: rect(0px,230px,2px,0px); */
+    /* clip: rect(0px,2px,230px,0px); */
+    /* clip: rect(228px,230px,230px,0px); */
+    /* clip: rect(0px,230px,230px,228px); */
+    animation: borderClip 8s ease infinite;
+}
+
+.box::after{
+    animation-delay: -4s;
+}
+
+.box:hover::before,
+.box:hover::after{
+    animation-play-state: paused;
+}
+@keyframes borderClip{
+    0%,100%{
+        clip: rect(0px,430px,2px,0px);
+    }
+    25%{
+        clip: rect(0px,2px,430px,0px);
+    }
+    50%{
+        clip: rect(428px,430px,430px,0px);
+    }
+    75%{
+        clip: rect(0px,430px,430px,428px);
+    }
+}
+
+/* 分割线 */
+.box h2{
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+
+}
+
+.box .inputBox{
+    position: relative;
+}
+
+.input1{
+    width: 100%;
+    padding: 10px 0;
+    font-size:  16px;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+    
+}
+
+.lab1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size:  16px;
+    color: #fff;
+    letter-spacing: 1px;
+    pointer-events: none;
+    transition: .5s;/*文字渐变*/
+}
+
+.box .inputBox input:focus ~ label,
+.box .inputBox input:valid ~ label
+{
+    top:-18px;
+    left:0;
+    color:#03a9f4;
+    font-size: 12px;
+}
+
+.btn1{
+    border-radius: 8px;
+    width: 150px;
+    height: 25px;
+    background: none;
+    border: 1px solid white ;
+    font-family: "montserrat",sans-serif;
+    text-transform: uppercase;
+    padding: 12px,20px;
+    min-width: 120px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: color 0.4s linear;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn1:hover{
+    color: #3498db;
+}
+
+.btn1::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #3498db;
+    z-index: -1;
+    transition: transform 0.5s;
+    transform-origin: 0 0;
+    transition-timing-function: cubic-bezier(0.5,1.6,0.4,0.7);
+    transform: scaleX(0);
+}
+
+.btn1:hover::before{
+    transform: scaleX(1);
+}
+
+
+/* 我是分割线*/
+
+.middle{
+    position: absolute;
+    top: 75%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+}
+
+.btn{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: #f1f1f1;
+    margin: 10px;
+    border-radius: 30%;
+    box-shadow: 0 5px 15px -5px #00000070;
+    color: #3498db;
+    overflow: hidden;
+    position: relative;
+}
+.btn i{
+    line-height: 45px;
+    font-size: 24px;
+    transition: 0.2s linear;
+
+}
+
+.btn:hover i{
+    transform:  scale(1.3);
+    color: #f1f1f1;
+
+}
+
+.btn::before{
+    content:"";
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background: #3498db;
+    transform: rotate(45deg);
+    left: -110%;
+    top: 90%;
+
+}
+
+.btn:hover::before{
+    animation: aaa 0.7s 1;
+    top:-10%;
+    left:-10%
+}
+
+@keyframes aaa{
+    0%{
+        left: -110%;
+        top: 90%;
+    }
+    50%{
+        left: 10%;
+        top: -30%;
+    }
+    100%{
+        left: -10%;
+        top: -10%;
+    }
+}
+
+
+/* 右上角悬停菜单样式 */
+.nav{
+    position: absolute;
+    left: 60%;
+    top:0;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+ul li{
+    list-style: none;
+    margin: 0,20px;
+    transition: 0.5s;
+}
+
+ul li a{
+    display: block;
+    position: relative;
+    text-decoration: none;
+    padding: 5px;
+    margin: 5px;
+    font-size: 15px;
+    font-family: sans-serif;
+    color:#fff ;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+ul:hover li a{
+    /* 放大 */
+    transform: scale(1.5);
+    opacity: .2;
+    filter: blur(5px);
+}
+
+ul li a:hover{
+    transform: scale(2);
+    opacity: 1;
+    filter: blur(0);
+}
+
+ul li a::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ff497c;
+    transition: 0.5s;
+    transform-origin: right;
+    transform: scale(0);
+    z-index:-1;
+
+}
+
+ul li a:hover::before{
+    transition: transform 0.5s;
+    transform-origin: left;
+    transform: scale(1);
+
+
+}

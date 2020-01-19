@@ -76,4 +76,5 @@ public interface RoleRepository extends BaseRepository<Role,Long> {
     public Integer cancelMenuJoin(List<Long> ids);
 
 
+
 }

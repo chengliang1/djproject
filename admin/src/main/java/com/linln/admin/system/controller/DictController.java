@@ -28,7 +28,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
-
  * @date 8/14
  */
 @Controller
@@ -43,7 +42,7 @@ public class DictController {
      */
     @GetMapping("/index")
     @RequiresPermissions("system:dict:index")
-    public String index(Model model, Dict dict){
+    public String index(Model model, Dict dict) {
 
         // 创建匹配器，进行动态查询匹配
         ExampleMatcher matcher = ExampleMatcher.matching().
@@ -64,7 +63,7 @@ public class DictController {
      */
     @GetMapping("/add")
     @RequiresPermissions("system:dict:add")
-    public String toAdd(){
+    public String toAdd() {
         return "/system/dict/add";
     }
 
@@ -73,20 +72,21 @@ public class DictController {
      */
     @GetMapping("/edit/{id}")
     @RequiresPermissions("system:dict:edit")
-    public String toEdit(@PathVariable("id") Dict dict, Model model){
+    public String toEdit(@PathVariable("id") Dict dict, Model model) {
         model.addAttribute("dict", dict);
         return "/system/dict/add";
     }
 
     /**
      * 保存添加/修改的数据
+     *
      * @param valid 验证对象
      */
-    @PostMapping({"/add","/edit"})
-    @RequiresPermissions({"system:dict:add","system:dict:edit"})
+    @PostMapping({"/add", "/edit"})
+    @RequiresPermissions({"system:dict:add", "system:dict:edit"})
     @ResponseBody
     @ActionLog(name = "字典管理", message = "字典：${title}", action = SaveAction.class)
-    public ResultVo save(@Validated DictValid valid, @EntityParam Dict dict){
+    public ResultVo save(@Validated DictValid valid, @EntityParam Dict dict) {
         // 清除字典值两边空格
         dict.setValue(dict.getValue().trim());
 
@@ -96,14 +96,14 @@ public class DictController {
         }
 
         // 复制保留无需修改的数据
-        if(dict.getId() != null){
+        if (dict.getId() != null) {
             Dict beDict = dictService.getById(dict.getId());
             EntityBeanUtil.copyProperties(beDict, dict);
         }
 
         // 保存数据
         dictService.save(dict);
-        if(dict.getId() != null){
+        if (dict.getId() != null) {
             DictUtil.clearCache(dict.getName());
         }
         return ResultVoUtil.SAVE_SUCCESS;
@@ -114,8 +114,8 @@ public class DictController {
      */
     @GetMapping("/detail/{id}")
     @RequiresPermissions("system:dict:detail")
-    public String toDetail(@PathVariable("id") Dict dict, Model model){
-        model.addAttribute("dict",dict);
+    public String toDetail(@PathVariable("id") Dict dict, Model model) {
+        model.addAttribute("dict", dict);
         return "/system/dict/detail";
     }
 
@@ -128,7 +128,7 @@ public class DictController {
     @ActionLog(name = "字典状态", action = StatusAction.class)
     public ResultVo status(
             @PathVariable("param") String param,
-            @RequestParam(value = "ids", required = false) List<Long> ids){
+            @RequestParam(value = "ids", required = false) List<Long> ids) {
         // 更新状态
         StatusEnum statusEnum = StatusUtil.getStatusEnum(param);
         if (dictService.updateStatus(statusEnum, ids)) {

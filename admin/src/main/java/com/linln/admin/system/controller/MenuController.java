@@ -29,7 +29,6 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
-
  * @date 8/14
  */
 @Controller
@@ -82,7 +81,7 @@ public class MenuController {
     @ResponseBody
     public Map<Integer, String> sortList(
             @PathVariable(value = "pid", required = false) Long pid,
-            @PathVariable(value = "notId", required = false) Long notId){
+            @PathVariable(value = "notId", required = false) Long notId) {
         // 本级排序菜单列表
         notId = notId != null ? notId : (long) 0;
         List<Menu> levelMenu = menuService.getListByPid(pid, notId);
@@ -117,19 +116,20 @@ public class MenuController {
 
     /**
      * 保存添加/修改的数据
+     *
      * @param valid 验证对象
-     * @param menu 实体对象
+     * @param menu  实体对象
      */
     @PostMapping("/save")
     @RequiresPermissions({"system:menu:add", "system:menu:edit"})
     @ResponseBody
     @ActionLog(name = "菜单管理", message = "菜单：${title}", action = SaveAction.class)
     public ResultVo save(@Validated MenuValid valid, @EntityParam Menu menu) {
-         if (menu.getId() == null) {
+        if (menu.getId() == null) {
             // 排序为空时，添加到最后
-            if(menu.getSort() == null){
+            if (menu.getSort() == null) {
                 Integer sortMax = menuService.getSortMax(menu.getPid());
-                menu.setSort(sortMax !=null ? sortMax - 1 : 0);
+                menu.setSort(sortMax != null ? sortMax - 1 : 0);
             }
         }
 
