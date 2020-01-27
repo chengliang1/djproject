@@ -43,13 +43,14 @@
                             <label class="timo-checkbox"><input type="checkbox">
                                 <i class="layui-icon layui-icon-ok"></i></label>
                         </th>
-                        <th>主键ID</th>
+                        <th>用户名</th>
                         <th>真实姓名</th>
                         <th>身份证号</th>
                         <th>车品牌</th>
                         <th>司机星级</th>
                         <th>订单次数</th>
                         <th>司机驾龄</th>
+                        <th>司机状态</th>
                         <th>最后修改时间</th>
                         <th>操作</th>
                     </tr>
@@ -58,13 +59,14 @@
                     <tr th:each="item:${list}">
                         <td><label class="timo-checkbox"><input type="checkbox" th:value="${item.id}">
                             <i class="layui-icon layui-icon-ok"></i></label></td>
-                        <td th:text="${item.id}">主键ID</td>
+                        <td th:text="${item.username}">用户名</td>
                         <td th:text="${item.name}">真实姓名</td>
                         <td th:text="${item.IdCard}">身份证号</td>
                         <td th:text="${item.car_brand}">车品牌</td>
                         <td th:text="${item.driver_star}">司机星级</td>
                         <td th:text="${item.order_num}">订单次数</td>
                         <td th:text="${item.driver_time}">司机驾龄</td>
+                        <td th:text="${item.work}">司机状态</td>
                         <td th:text="${item.update_time}">最后修改时间</td>
                         <td>
                             <a class="open-popup" data-title="编辑司机信息管理" th:attr="data-url=@{'/driverinformation/drivers/edit/'+${item.id}}" data-size="auto" href="#">编辑</a>

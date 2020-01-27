@@ -47,8 +47,12 @@ public class RegisterController {
         if (userService.repeatByUsername(user)) {
             throw new ResultException(ResultEnum.USER_EXIST);
         }
+        //设置昵称
+        user.setNickname("昵称");
         //设置初始金额
         user.setBalance(500);
+
+        //设置权限为用户组
         Set<Role> roles = new HashSet<> ();
         Role role = new Role();
         role.setId(3l);

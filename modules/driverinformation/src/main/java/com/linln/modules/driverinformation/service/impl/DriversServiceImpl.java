@@ -1,7 +1,6 @@
 package com.linln.modules.driverinformation.service.impl;
 
 import com.linln.common.data.PageSort;
-import com.linln.common.enums.StatusEnum;
 import com.linln.modules.driverinformation.domain.Drivers;
 import com.linln.modules.driverinformation.repository.DriversRepository;
 import com.linln.modules.driverinformation.service.DriversService;
@@ -11,7 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 /**
@@ -53,6 +51,18 @@ public class DriversServiceImpl implements DriversService {
     @Override
     public Drivers save(Drivers drivers) {
         return driversRepository.save(drivers);
+    }
+
+
+    /**
+     * 小程序请求司机信息
+     * @return
+     */
+    @Override
+    public List<Drivers> getAllInfo(Drivers drivers) {
+        Example<Drivers> driversExample = Example.of(drivers);
+        List<Drivers> driverinfo = driversRepository.findAll(driversExample);
+        return driverinfo;
     }
 
 }

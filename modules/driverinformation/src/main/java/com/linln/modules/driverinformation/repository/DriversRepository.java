@@ -9,4 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @date 2020/01/16
  */
 public interface DriversRepository extends JpaRepository<Drivers, Integer> {
+
 }

@@ -32,4 +32,10 @@ public interface DriversService {
      * @param drivers 实体对象
      */
     Drivers save(Drivers drivers);
+
+    /**
+     * 小程序请求司机信息
+     * @return
+     */
+    List<Drivers> getAllInfo(Drivers drivers);
 }

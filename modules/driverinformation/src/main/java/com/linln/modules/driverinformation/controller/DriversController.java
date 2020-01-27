@@ -13,8 +13,12 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Random;
 
 /**
  * @author 程亮
@@ -95,4 +99,29 @@ public class DriversController {
         model.addAttribute("drivers",drivers);
         return "/driverinformation/drivers/detail";
     }
+
+
+    /**
+     * 小程序请求司机信息
+     * @return
+     */
+    @GetMapping("/getWork")
+    @ResponseBody
+    public ResultVo<Drivers> driversInfo(){
+        Drivers drivers = new Drivers();
+        drivers.setWork(2);
+        List<Drivers> allInfo = driversService.getAllInfo(drivers);
+        if (StringUtils.isEmpty(allInfo)){
+            return ResultVoUtil.success("not drivers");
+        }
+
+        Random random = new Random();
+        Drivers drivers1 = allInfo.get(random.nextInt(allInfo.size()));
+        drivers1.setWork(1);
+        driversService.save(drivers1);
+
+        return ResultVoUtil.success(drivers1);
+    }
+
+
 }
