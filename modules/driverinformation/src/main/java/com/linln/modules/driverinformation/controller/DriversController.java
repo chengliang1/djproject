@@ -112,15 +112,14 @@ public class DriversController {
         drivers.setWork(2);
         List<Drivers> allInfo = driversService.getAllInfo(drivers);
         if (StringUtils.isEmpty(allInfo)){
-            return ResultVoUtil.success("not drivers");
+            return ResultVoUtil.error("not drivers");
         }
-
         Random random = new Random();
         Drivers drivers1 = allInfo.get(random.nextInt(allInfo.size()));
         drivers1.setWork(1);
         driversService.save(drivers1);
-
         return ResultVoUtil.success(drivers1);
+
     }
 
 

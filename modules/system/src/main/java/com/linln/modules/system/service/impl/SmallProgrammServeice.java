@@ -22,7 +22,7 @@ public class SmallProgrammServeice {
     public User smallLogin(User user1) {
 
         User user = smallRespontory.findByUsername(user1.getUsername());
-        if (user==null){
+        if (user == null){
             return null;
         }
         return user;

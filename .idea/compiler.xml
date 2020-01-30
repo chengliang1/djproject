@@ -15,6 +15,7 @@
         <module name="excel" />
         <module name="fileUpload" />
         <module name="jwt" />
+        <module name="orderinformation" />
         <module name="shiro" />
         <module name="system" />
         <module name="thymeleaf" />
@@ -36,6 +37,7 @@
       <module name="fileUpload" target="1.8" />
       <module name="jwt" target="1.8" />
       <module name="modules" target="1.8" />
+      <module name="orderinformation" target="1.8" />
       <module name="qqq" target="1.8" />
       <module name="shiro" target="1.8" />
       <module name="system" target="1.8" />
@@ -57,6 +59,7 @@
       <module name="excel" options="-parameters" />
       <module name="fileUpload" options="-parameters" />
       <module name="jwt" options="-parameters" />
+      <module name="orderinformation" options="-parameters" />
       <module name="qqq" options="-parameters" />
       <module name="shiro" options="-parameters" />
       <module name="system" options="-parameters" />

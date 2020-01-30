@@ -33,9 +33,7 @@ public class SmallProgramController {
             return ResponseEntity.ok(false);
         }
         String encrypt = ShiroUtil.encrypt(smallUser.getPassword(), u.getSalt());
-        System.out.println(encrypt+"encrypt");
         if (StringUtils.equals(u.getPassword(),encrypt)){
-            System.out.println(u+"----");
             return ResponseEntity.ok(true);
         }else {
             return ResponseEntity.ok(false);

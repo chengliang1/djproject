@@ -31,5 +31,6 @@
     <modules>
         <module>system</module>
         <module>driverinformation</module>
+        <module>orderinformation</module>
     </modules>
 </project>
