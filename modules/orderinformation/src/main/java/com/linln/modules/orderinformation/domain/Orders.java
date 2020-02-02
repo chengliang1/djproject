@@ -27,6 +27,7 @@ public class Orders implements Serializable {
     private Integer id;
     // 用户
     private String username;
+    //司机姓名
     private String name;
     // 订单日期
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
@@ -37,6 +38,8 @@ public class Orders implements Serializable {
     private String destination;
     // 路程
     private Float distance;
+    //行驶时间 与小程序传过来的unit进行拼接
+    private String duration;
     // 订单类型
     private String order_type;
     // 订单费用

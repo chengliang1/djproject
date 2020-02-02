@@ -27,7 +27,7 @@ public class Drivers implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     // 用户名
-    private String username;
+    private String drivername;
     //真实姓名
     private String name;
     // 身份证号

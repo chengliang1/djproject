@@ -1,10 +1,8 @@
 package com.linln.modules.driverinformation.service;
 
-import com.linln.common.enums.StatusEnum;
 import com.linln.modules.driverinformation.domain.Drivers;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body>
+    <div class="layui-form timo-compile">
+    <form th:action="@{/driver/driverInformation/save}">
+        <input type="hidden" name="id" th:if="${driverInformation}" th:value="${driverInformation.id}">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="username" placeholder="请输入用户名" th:value="${driverInformation?.username}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">真实姓名</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name=" name" placeholder="请输入真实姓名" th:value="${driverInformation?. name}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">身份证号</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="IdCard" placeholder="请输入身份证号" th:value="${driverInformation?.IdCard}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">身份证照片</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="IdCard_image" placeholder="请输入身份证照片" th:value="${driverInformation?.IdCard_image}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">车品牌</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="car_brand" placeholder="请输入车品牌" th:value="${driverInformation?.car_brand}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">车颜色</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="car_color" placeholder="请输入车颜色" th:value="${driverInformation?.car_color}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">司机星级</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="driver_star" placeholder="请输入司机星级" th:value="${driverInformation?.driver_star}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">订单次数</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="order_nun" placeholder="请输入订单次数" th:value="${driverInformation?.order_nun}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">司机驾龄</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="driver_time" placeholder="请输入司机驾龄" th:value="${driverInformation?.driver_time}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">创建时间</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="create_time" placeholder="请输入创建时间" th:value="${driverInformation?.create_time}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">最后修改时间</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="update_time" placeholder="请输入最后修改时间" th:value="${driverInformation?.update_time}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">简介</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="remarks" placeholder="请输入简介" th:value="${driverInformation?.remarks}">
+            </div>
+        </div>
+        <div class="layui-form-item timo-finally">
+            <button class="layui-btn ajax-submit"><i class="fa fa-check-circle"></i> 保存</button>
+            <button class="layui-btn btn-secondary close-popup"><i class="fa fa-times-circle"></i> 关闭</button>
+        </div>
+    </form>
+</div>
+<script th:replace="/common/template :: script"></script>
+</body>
+</html>

@@ -50,7 +50,7 @@ public class RegisterController {
         //设置昵称
         user.setNickname("昵称");
         //设置初始金额
-        user.setBalance(500);
+        user.setBalance(10000f);
 
         //设置权限为用户组
         Set<Role> roles = new HashSet<> ();

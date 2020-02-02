@@ -1,7 +1,6 @@
 package com.linln.modules.orderinformation.service.impl;
 
 import com.linln.common.data.PageSort;
-import com.linln.common.enums.StatusEnum;
 import com.linln.modules.orderinformation.domain.Orders;
 import com.linln.modules.orderinformation.repository.OrdersRepository;
 import com.linln.modules.orderinformation.service.OrdersService;
@@ -12,7 +11,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 
 /**
  * @author 程亮

@@ -61,6 +61,7 @@ public class ShiroConfig {
         filterMap.put("/smallprogram","anon");
         filterMap.put("/registers","anon");
         filterMap.put("/driverinformation/drivers/getWork","anon");
+        filterMap.put("/orderinformation/orders/orderSave","anon");
         // 通过yml配置文件方式配置的[anon]忽略规则
         String[] excludes = properties.getExcludes().split(",");
         for (String exclude : excludes) {

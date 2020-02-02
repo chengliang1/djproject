@@ -50,7 +50,7 @@ public class User implements Serializable {
     @Excel("电子邮箱")
     private String email;
     @Excel("余额")
-    private Integer balance;
+    private Float balance;
     @CreatedDate
     @Excel("创建时间")
     private Date createDate;
