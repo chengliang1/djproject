@@ -25,6 +25,8 @@ public class Orders implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
+    //订单编号
+    private Long orderid;
     // 用户
     private String username;
     //司机姓名

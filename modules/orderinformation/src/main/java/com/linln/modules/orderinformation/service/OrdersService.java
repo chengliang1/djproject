@@ -31,6 +31,11 @@ public interface OrdersService {
      */
     Orders save(Orders orders);
 
-
+    /**
+     * 根据订单编号查询订单
+     * @param id
+     * @return
+     */
+    Orders getByOrderId(Long id);
 
 }

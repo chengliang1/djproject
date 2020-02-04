@@ -53,5 +53,15 @@ public class OrdersServiceImpl implements OrdersService {
         return ordersRepository.save(orders);
     }
 
+    /**
+     * 根据订单编号查询订单
+     * @param id
+     * @return
+     */
+    @Override
+    public Orders getByOrderId(Long id) {
+        return ordersRepository.findByOrderid(id);
+    }
+
 
 }

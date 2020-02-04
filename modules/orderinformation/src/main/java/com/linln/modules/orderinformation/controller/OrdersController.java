@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -122,6 +121,8 @@ public class OrdersController {
      */
     @GetMapping("/orderSave")
     public ResponseEntity<Boolean> programOrderSave(HttpServletRequest request, HttpServletResponse response){
+        String orderid1 = request.getParameter("orderid");
+        Long orderid = Long.parseLong(orderid1);
         String id1 = request.getParameter("id");
         Integer id = Integer.parseInt(id1);
         String name = request.getParameter("name");
@@ -153,6 +154,7 @@ public class OrdersController {
         try {
             Date order_date = simpleDateFormat.parse(String.valueOf(order_date2));
             Orders orders = new Orders();
+            orders.setOrderid(orderid);
             orders.setName(name);
             orders.setUsername(username);
             orders.setOrder_date(order_date);
@@ -181,25 +183,29 @@ public class OrdersController {
             driversService.save(drivers);
 
 
-            //测试
-            Integer id2 = 10;
-            Orders os = ordersService.getById(id2);
-            System.out.println(os.toString());
-
-
         } catch (ParseException e) {
             e.printStackTrace();
             System.out.println("日期转换错误");
         }
-
-
-
-        /*
-        System.out.println(name+"---"+username+"---"+order_date1+"---"+"---"+order_type
-        +"---"+origin+"---"+destination+"---"+distance1+"--"+duration1 +"--"+unit+"---"+order_price1);*/
-
         return ResponseEntity.ok(true);
+    }
 
+    /**
+     * 小程序订单评价
+     * @param request
+     * @param response
+     * @return
+     */
+    @GetMapping("/evaluate")
+    public ResponseEntity<Boolean> programEvaluate(HttpServletRequest request,HttpServletResponse response){
+        String orderid1 = request.getParameter("orderid");
+        String evaluateStar1 = request.getParameter("evaluatestar");
+        Integer evaluateStar = Integer.parseInt(evaluateStar1);
+        Long orderid = Long.parseLong(orderid1);
+        Orders orders  = ordersService.getByOrderId(orderid);
+        orders.setEvaluation_star(evaluateStar);
+        ordersService.save(orders);
+        return ResponseEntity.ok(true);
     }
 
 

@@ -3,7 +3,6 @@ package com.linln.modules.orderinformation.repository;
 import com.linln.modules.orderinformation.domain.Orders;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Date;
 
 
 /**
@@ -12,6 +11,12 @@ import java.util.Date;
  */
 public interface OrdersRepository extends JpaRepository<Orders, Integer> {
 
+    /**
+     * 根据订单编号查询订单
+     * @param orderid
+     * @return
+     */
+    Orders findByOrderid(Long orderid);
 
 
 }
