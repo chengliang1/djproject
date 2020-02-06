@@ -100,6 +100,42 @@ public class MainController {
         return "/system/main/index";
     }
 
+    /**
+     * 司机招聘
+     * @return
+     */
+    @GetMapping("/recruitment")
+    public String recruitment(){
+        return "/system/main/recruitment";
+    }
+
+    /**
+     * 常见问答
+     * @return
+     */
+    @GetMapping("/answer")
+    public String answer(){
+        return "/system/main/answer";
+    }
+
+    /**
+     * 新闻动态
+     * @return
+     */
+    @GetMapping("/dynamic")
+    public String dynamic(){
+        return "/system/main/dynamic";
+    }
+
+    /**
+     * 联系我们
+     * @return
+     */
+    @GetMapping("/linkus")
+    public String linkUs(){
+        return "/system/main/linkus";
+    }
+
 
     /**
      * 跳转到个人信息页面
