@@ -32,5 +32,6 @@
         <module>system</module>
         <module>driverinformation</module>
         <module>orderinformation</module>
+        <module>recruitdriver</module>
     </modules>
 </project>

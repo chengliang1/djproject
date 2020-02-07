@@ -128,6 +128,24 @@ public class MainController {
     }
 
     /**
+     * 感恩节活动
+     * @return
+     */
+    @GetMapping("/grateful")
+    public String grateful(){
+        return "/system/dynamic/grateful";
+    }
+
+    /**
+     * 南京代驾司机中途溺亡
+     * @return
+     */
+    @GetMapping("/safety")
+    public String safety(){
+        return "/system/dynamic/safety";
+    }
+
+    /**
      * 联系我们
      * @return
      */

@@ -16,6 +16,7 @@
         <module name="fileUpload" />
         <module name="jwt" />
         <module name="orderinformation" />
+        <module name="recruitdriver" />
         <module name="shiro" />
         <module name="system" />
         <module name="thymeleaf" />
@@ -39,6 +40,7 @@
       <module name="modules" target="1.8" />
       <module name="orderinformation" target="1.8" />
       <module name="qqq" target="1.8" />
+      <module name="recruitdriver" target="1.8" />
       <module name="shiro" target="1.8" />
       <module name="system" target="1.8" />
       <module name="test" target="1.8" />
@@ -61,6 +63,7 @@
       <module name="jwt" options="-parameters" />
       <module name="orderinformation" options="-parameters" />
       <module name="qqq" options="-parameters" />
+      <module name="recruitdriver" options="-parameters" />
       <module name="shiro" options="-parameters" />
       <module name="system" options="-parameters" />
       <module name="test" options="-parameters" />

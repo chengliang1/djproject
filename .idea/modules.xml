@@ -14,6 +14,7 @@
       <module fileurl="file://$PROJECT_DIR$/component/jwt/jwt.iml" filepath="$PROJECT_DIR$/component/jwt/jwt.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/modules.iml" filepath="$PROJECT_DIR$/modules/modules.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/orderinformation/orderinformation.iml" filepath="$PROJECT_DIR$/modules/orderinformation/orderinformation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/recruitdriver/recruitdriver.iml" filepath="$PROJECT_DIR$/modules/recruitdriver/recruitdriver.iml" />
       <module fileurl="file://$PROJECT_DIR$/component/shiro/shiro.iml" filepath="$PROJECT_DIR$/component/shiro/shiro.iml" />
       <module fileurl="file://$PROJECT_DIR$/modules/system/system.iml" filepath="$PROJECT_DIR$/modules/system/system.iml" />
       <module fileurl="file://$PROJECT_DIR$/component/thymeleaf/thymeleaf.iml" filepath="$PROJECT_DIR$/component/thymeleaf/thymeleaf.iml" />

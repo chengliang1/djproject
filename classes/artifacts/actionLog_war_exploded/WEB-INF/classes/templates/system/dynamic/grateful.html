@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*个人css*/
+        .about-banner {
+            background: #1ab11a;
+            overflow: hidden;
+        }
+
+        .about-banner img {
+            margin: 20px auto 0;
+            display: block;
+        }
+
+        .dynamic-content{
+            background-color: #FFFFFF;
+            padding: 18px;
+        }
+
+        .dynamic-main{
+            width: 80%;
+            height: 758px;
+            border: 1px solid #e4e4e4;
+            margin: 20px 10% 0 10%;
+        }
+
+        .ui-taps{
+            height: 56px;
+            border-bottom: 1px solid #e4e4e4;
+        }
+
+        .ui-tap {
+            font-size: 14px;
+            width: 122px;
+            cursor: pointer;
+            color: #8d8d8d;
+            text-align: center;
+            line-height: 56px;
+            border-right: 1px solid #e4e4e4;
+            border-top: 3.5px solid #08b548;
+        }
+
+
+    </style>
+</head>
+<body class="dynamic-content">
+<div th:replace="/common/footer :: head"></div>
+<div th:replace="/common/dynamichead :: dynamicheader"></div>
+<div class="dynamic-main">
+    <div class="ui-taps">
+        <div class="ui-tap">
+            久候代驾动态
+        </div>
+    </div>
+    感恩
+</div>
+<br><br><br>
+
+<div th:replace="/common/footer :: foot"></div>
+
+
+<script th:replace="/common/template :: script"></script>
+
+</body>
+</html>
