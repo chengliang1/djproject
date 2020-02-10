@@ -1,15 +1,10 @@
 package com.linln.modules.recruitdriver.domain;
 
-import com.linln.common.utils.StatusUtil;
 import lombok.Data;
-import org.hibernate.annotations.Where;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,12 +28,12 @@ public class RecruitDriver implements Serializable {
     private String IdCard;
     // 身份证照片
     private String IdCard_image;
-    // 驾驶证
+    // 驾驶证编号
     private String licence_num;
     // 驾驶证图片
     private String licence_image;
     // 联系电话
-    private Integer phone;
+    private Long phone;
     // 性别
     private Integer sex;
     // 驾龄

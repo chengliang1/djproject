@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*个人css*/
+        .dynamic-content{
+            background-color: #FFFFFF;
+        }
+
+        .about-banner {
+            background: #1ab11a;
+            overflow: hidden;
+        }
+
+        .about-banner img {
+            margin: 20px auto 0;
+            display: block;
+        }
+
+        .dynamic-main{
+            width: 80%;
+            height: 758px;
+            border: 1px solid #e4e4e4;
+            margin: 20px 10% 0 10%;
+        }
+
+        .ui-taps{
+            height: 56px;
+            border-bottom: 1px solid #e4e4e4;
+        }
+
+        .ui-tap {
+            font-size: 14px;
+            width: 122px;
+            cursor: pointer;
+            color: #8d8d8d;
+            text-align: center;
+            line-height: 56px;
+            border-right: 1px solid #e4e4e4;
+            border-top: 3.5px solid #08b548;
+        }
+
+        .blocks{
+            width: 100%;
+        }
+
+        .block{
+            height: 150px;
+            width: 100%;
+        }
+
+        .cont{
+            width: 96%;
+            height: 116px;
+            position: relative;
+            top: 33px;
+            left: 22px;
+            border-bottom: 1px solid #e4e4e4;
+        }
+
+        .cont-img{
+            width: 120px;
+            height: 100px;
+            float: left;
+        }
+
+        .head{
+            width: 82%;
+            height: 22px;
+            float: left;
+            font-size: 16px;
+            color: #000;
+            margin-left: 40px;
+        }
+
+        .cont-time{
+            display: block;
+            float: right;
+            color: #8d8d8d;
+            font-size: 12px;
+            line-height: 22px;
+        }
+
+        .txt{
+            margin-top: 8px;
+            height: 20px;
+            font-size: 12px;
+            line-height: 20px;
+            color: #8d8d8d;
+        }
+
+        .cont-btn{
+            font-size: 12px;
+            display: inline-block;
+            width: 86px;
+            height: 26px;
+            line-height: 26px;
+            color: #8d8d8d;
+            text-align: center;
+            border: solid 1px #8d8d8d;
+            border-radius: 14px;
+            margin-top: 5px;
+        }
+
+        .cont-btn:hover{
+            color: #08b548;
+        }
+
+        .divPager{
+            width: 96%;
+            height: 35px;
+            position: relative;
+            top: 33px;
+            left: 22px;
+        }
+
+        .pageright{
+            float: right;
+        }
+
+        .item{
+            width: 66px;
+            height: 22px;
+            display: inline-block;
+            text-align: center;
+            font-size: 16px;
+            background-color: #f2efea;
+            border: 1px solid #CCC;
+        }
+
+        .item-page{
+            width: 66px;
+            height: 22px;
+            display: inline-block;
+            text-align: center;
+            font-size: 16px;
+            background-color: #f2efea;
+            border: 1px solid #CCC;
+        }
+
+        .item-page:hover{
+            color: #08b548;
+        }
+
+        .curItem{
+            width: 24px;
+            height: 24px;
+            font-size: 19px;
+            background-color: #08b548;
+            color: #FFFFFF;
+            text-align: center;
+            display: inline-block;
+        }
+
+
+
+
+
+    </style>
+</head>
+<body class="timo-layout-page">
+<div th:replace="/common/footer :: head"></div>
+<div class="dynamic-content">
+    <div class="about-banner">
+        <img src="../images/about-banner.png" alt="">
+    </div>
+    <div class="dynamic-main">
+        <div class="ui-taps">
+            <div class="ui-tap">
+                久候代驾动态
+            </div>
+        </div>
+        <div class="blocks">
+            <div class="block">
+                <div class="cont">
+                    <img class="cont-img"  src="../images/dynamic1.png" alt="感恩节活动">
+                    <div class="head">
+                        久候代驾感恩卡上线,敬情谊常相聚!
+                        <span class="cont-time">
+                            2019/12/11
+                        </span>
+                        <div class="txt">
+                            久候代驾感恩卡上线,敬情谊常相聚!
+                        </div>
+                        <a th:href="@{/grateful}" class="cont-btn">查看详情</a>
+                    </div>
+                </div>
+            </div>
+            <div class="block">
+                <div class="cont">
+                    <img class="cont-img"  src="../images/dynamic2.jpeg" alt="">
+                    <div class="head">
+                        南京司机代驾途中溺亡，怎样叫代驾才是安全的？
+                        <span class="cont-time">
+                            2017/12/7
+                        </span>
+                        <div class="txt">
+                            南京司机代驾途中溺亡，怎样叫代驾才是安全的？
+                        </div>
+                        <a th:href="@{/safety}" class="cont-btn">查看详情</a>
+                    </div>
+                </div>
+            </div>
+            <div class="block">
+                <div class="cont">
+                    <img class="cont-img"  src="../images/dynamic3.png" alt="">
+                    <div class="head">
+                        公司成立2个月屡屡上头版，他是怎么做到的？
+                        <span class="cont-time">
+                            2020/01/01
+                        </span>
+                        <div class="txt">
+                            公司成立2个月屡屡上头版，他是怎么做到的？
+                        </div>
+                        <a href="" class="cont-btn">查看详情</a>
+                    </div>
+                </div>
+            </div>
+            <div class="block">
+                <div class="cont">
+                    <img class="cont-img"  src="../images/dynamic4.png" alt="">
+                    <div class="head">
+                        久候代驾携手上海交通部门，让道路安全深入人心
+                        <span class="cont-time">
+                            2020/01/03
+                        </span>
+                        <div class="txt">
+                            爱代驾携手滁州交通部门，让道路安全深入人心
+                        </div>
+                        <a href="" class="cont-btn">查看详情</a>
+                    </div>
+                </div>
+            </div>
+            <div class="divPager">
+                <div class="pageright">
+                    <div class="item">1&nbsp;/&nbsp;1页</div>
+                    <a class="item-page" href="">«上一页</a>
+                    <div class="curItem">1</div>
+                    <a class="item-page" href="">下一页»</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br>
+
+
+</div>
+<div th:replace="/common/footer :: foot"></div>
+
+
+<script th:replace="/common/template :: script"></script>
+
+</body>
+</html>
+
