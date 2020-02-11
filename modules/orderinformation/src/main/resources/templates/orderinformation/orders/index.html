@@ -56,9 +56,8 @@
                         <th>出发地</th>
                         <th>目的地</th>
                         <th>路程/公里</th>
-                        <th>订单类型</th>
                         <th>订单费用/(单位:元)</th>
-                        <th>星级评价</th>
+                        <th>用户评价</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -72,13 +71,12 @@
                         <td th:text="${item.origin}">出发地</td>
                         <td th:text="${item.destination}">目的地</td>
                         <td th:text="${item.distance}">路程</td>
-                        <td th:text="${item.order_type}">订单类型</td>
                         <td th:text="${item.order_price}">订单费用</td>
-                        <td th:text="${item.evaluation_star}">星级评价</td>
+                        <td th:text="${#dicts.keyValue('DRIVER_STAR', item.evaluation_star)}">用户评价</td>
                         <td>
                             <a class="open-popup" data-title="编辑订单信息管理" th:attr="data-url=@{'/orderinformation/orders/edit/'+${item.id}}" data-size="auto" href="#">编辑</a>
                             <a class="open-popup" data-title="详细信息" th:attr="data-url=@{'/orderinformation/orders/detail/'+${item.id}}" data-size="800,600" href="#">详细</a>
-                            <a class="ajax-get" data-msg="您是否确认删除" th:href="@{/orderinformation/orders/status/delete(ids=${item.id})}">删除</a>
+                            <a class="ajax-get" data-msg="您是否确认删除" th:href="@{'/orderinformation/orders/delete/'+${item.id}}">删除</a>
                         </td>
                     </tr>
                     </tbody>

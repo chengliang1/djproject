@@ -26,6 +26,17 @@ public interface DriversService {
     Drivers getById(Integer id);
 
     /**
+     * 根据id删除
+     * @param id
+     */
+    void deleteById(Integer id);
+
+    /**
+     * 批量删除
+     */
+    public void deleteBatch(List<Drivers> drivers);
+
+    /**
      * 保存数据
      * @param drivers 实体对象
      */

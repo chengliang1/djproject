@@ -18,5 +18,11 @@ public interface OrdersRepository extends JpaRepository<Orders, Integer> {
      */
     Orders findByOrderid(Long orderid);
 
+    /**
+     * 根据id删除
+     * @param id
+     */
+    void removeOrdersById(Integer id);
+
 
 }

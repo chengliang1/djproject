@@ -33,6 +33,16 @@ public class OrdersServiceImpl implements OrdersService {
     }
 
     /**
+     * 根据id删除
+     * @param id
+     */
+    @Override
+    @Transactional
+    public void deleteById(Integer id) {
+        ordersRepository.removeOrdersById(id);
+    }
+
+    /**
      * 获取分页列表数据
      * @param example 查询实例
      * @return 返回分页数据

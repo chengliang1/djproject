@@ -17,6 +17,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -34,7 +36,7 @@ public class DriversController {
     /**
      * 列表页面
      */
-    @GetMapping("/index")
+    @RequestMapping("/index")
     @RequiresPermissions("driverinformation:drivers:index")
     public String index(Model model, Drivers drivers) {
 
@@ -100,6 +102,36 @@ public class DriversController {
         return "/driverinformation/drivers/detail";
     }
 
+    /**
+     * 根据id删除
+     * @param id
+     * @return
+     */
+    @GetMapping("/delete/{id}")
+    @ResponseBody
+    @RequiresPermissions("driverinformation:drivers:delete")
+    public ResultVo deleteDriversById(@PathVariable("id") Integer id){
+        driversService.deleteById(id);
+        return ResultVoUtil.success("删除成功");
+    }
+
+    /**
+     * 多行删除
+     * @return
+     */
+    @PostMapping("/remove/{ids}")
+    @ResponseBody
+    @RequiresPermissions("driverinformation:drivers:remove")
+    public ResultVo deleteByIds(@PathVariable("ids") List<Integer> ids){
+        List<Drivers> drivers = new ArrayList<>();
+        ids.stream().forEach(id ->{
+            Drivers driver = new Drivers();
+            driver.setId(id);
+            drivers.add(driver);
+        });
+        driversService.deleteBatch(drivers);
+        return ResultVoUtil.success("删除成功");
+    }
 
     /**
      * 小程序请求司机信息

@@ -33,6 +33,27 @@ public class DriversServiceImpl implements DriversService {
     }
 
     /**
+     * 根据id删除
+     * @param id
+     */
+    @Override
+    @Transactional
+    public void deleteById(Integer id) {
+        driversRepository.removeDriversById(id);
+    }
+
+    /**
+     * 批量删除
+     * @param
+     */
+    @Override
+    public void deleteBatch(List<Drivers> drivers) {
+        drivers.forEach(drivers1 -> {
+            driversRepository.delete(drivers1);
+        });
+    }
+
+    /**
      * 获取分页列表数据
      * @param example 查询实例
      * @return 返回分页数据
@@ -64,5 +85,6 @@ public class DriversServiceImpl implements DriversService {
         List<Drivers> driverinfo = driversRepository.findAll(driversExample);
         return driverinfo;
     }
+
 
 }

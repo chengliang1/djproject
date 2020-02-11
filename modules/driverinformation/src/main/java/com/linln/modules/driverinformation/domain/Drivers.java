@@ -40,12 +40,12 @@ public class Drivers implements Serializable {
     private String car_brand;
     //车牌照
     private String licence;
-    // 驾驶证
+    // 驾驶证编号
     private String licence_num;
     // 驾驶证图片
     private String licence_image;
     // 联系电话
-    private Integer phone;
+    private Long phone;
     // 车颜色
     private String car_color;
     // 司机星级

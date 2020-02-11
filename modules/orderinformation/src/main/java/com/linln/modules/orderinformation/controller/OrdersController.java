@@ -114,6 +114,19 @@ public class OrdersController {
         return "/orderinformation/orders/detail";
     }
 
+    /**
+     * 根据id删除
+     * @param id
+     * @return
+     */
+    @GetMapping("/delete/{id}")
+    @ResponseBody
+    @RequiresPermissions("orderinformation:orders:delete")
+    public ResultVo deleteOrderById(@PathVariable("id") Integer id){
+        ordersService.deleteById(id);
+        return ResultVoUtil.success("删除成功");
+    }
+
 
     /**
      * 小程序订单保存

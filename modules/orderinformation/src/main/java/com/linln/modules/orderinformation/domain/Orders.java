@@ -51,7 +51,7 @@ public class Orders implements Serializable {
     // 文字评价
     private String evaluation_text;
     // 创建日期
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createDate;
     // 备注
     @Lob

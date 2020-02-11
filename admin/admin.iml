@@ -25,7 +25,7 @@
             <entry key="com.zeroturnaround.jrebel.remoting.DeleteUnindexedFiles" value="false" />
             <entry key="com.zeroturnaround.jrebel.remoting.ModuleRemoteServerSelection" value="off" />
             <entry key="jrebelEnabled" value="true" />
-            <entry key="lastExternalPluginCheckTime" value="1578742242549" />
+            <entry key="lastExternalPluginCheckTime" value="1581398929204" />
           </map>
         </option>
         <option name="masterModuleName" />
@@ -49,7 +49,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: com.linln.modules:day:2.0.2" level="project" />
     <orderEntry type="module" module-name="common" />
     <orderEntry type="module" module-name="devtools" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-swagger2:2.9.2" level="project" />

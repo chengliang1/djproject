@@ -31,12 +31,10 @@
                     </div>
                 </div>
                 <div class="pull-right screen-btn-group">
-                    <button class="layui-btn open-popup" data-title="添加订单信息管理" th:attr="data-url=@{/orderinformation/orders/add}" data-size="auto">
-                        <i class="fa fa-plus"></i> 添加</button>
                     <div class="btn-group">
                         <button class="layui-btn">操作<span class="caret"></span></button>
                         <dl class="layui-nav-child layui-anim layui-anim-upbit">
-                            <dd><a class="ajax-status" th:href="@{/orderinformation/orders/status/delete}">删除</a></dd>
+                            <dd><a class="ajax-status"  id="deletebatch">删除</a></dd>
                         </dl>
                     </div>
                 </div>
@@ -49,13 +47,15 @@
                             <label class="timo-checkbox"><input type="checkbox">
                                 <i class="layui-icon layui-icon-ok"></i></label>
                         </th>
-                        <th>用户名</th>
+                        <th>编号</th>
                         <th>真实姓名</th>
                         <th>身份证号</th>
-                        <th>车品牌</th>
+                        <th>联系电话</th>
+                        <th>性别</th>
                         <th>司机星级</th>
-                        <th>订单次数</th>
-                        <th>司机驾龄</th>
+                        <th>订单次数/次</th>
+                        <th>账户余额/元</th>
+                        <th>司机驾龄/年</th>
                         <th>司机状态</th>
                         <th>最后修改时间</th>
                         <th>操作</th>
@@ -65,19 +65,21 @@
                     <tr th:each="item:${list}">
                         <td><label class="timo-checkbox"><input type="checkbox" th:value="${item.id}">
                             <i class="layui-icon layui-icon-ok"></i></label></td>
-                        <td th:text="${item.drivername}">用户名</td>
+                        <td th:text="${item.id}">编号</td>
                         <td th:text="${item.name}">真实姓名</td>
                         <td th:text="${item.IdCard}">身份证号</td>
-                        <td th:text="${item.car_brand}">车品牌</td>
+                        <td th:text="${item.phone}">联系电话</td>
+                        <td th:text="${#dicts.keyValue('USER_SEX', item.sex)}">性别</td>
                         <td th:text="${#dicts.keyValue('DRIVER_STAR', item.driver_star)}">司机星级</td>
                         <td th:text="${item.order_num}">订单次数</td>
+                        <td th:text="${item.money}">账户余额</td>
                         <td th:text="${item.driver_time}">司机驾龄</td>
                         <td th:text="${#dicts.keyValue('DRIVER_WORK', item.work)}">司机状态</td>
                         <td th:text="${item.update_time}">最后修改时间</td>
                         <td>
-                            <a class="open-popup" data-title="编辑司机信息管理" th:attr="data-url=@{'/driverinformation/drivers/edit/'+${item.id}}" data-size="auto" href="#">编辑</a>
-                            <a class="open-popup" data-title="详细信息" th:attr="data-url=@{'/driverinformation/drivers/detail/'+${item.id}}" data-size="800,600" href="#">详细</a>
-                            <a class="ajax-get" data-msg="您是否确认删除" th:href="@{/driverinformation/drivers/status/delete(ids=${item.id})}">删除</a>
+                            <a class="open-popup" data-title="编辑司机信息管理" th:attr="data-url=@{'/driverinformation/drivers/edit/'+${item.id}}" data-size="auto" href="">编辑</a>
+                            <a class="open-popup" data-title="详细信息" th:attr="data-url=@{'/driverinformation/drivers/detail/'+${item.id}}" data-size="800,600" href="">详细</a>
+                            <a class="ajax-get" data-msg="您是否确认删除" th:href="@{'/driverinformation/drivers/delete/'+${item.id}}">删除</a>
                         </td>
                     </tr>
                     </tbody>
@@ -88,4 +90,37 @@
     </div>
 <script th:replace="/common/template :: script"></script>
 </body>
+
+    <script th:src="@{/js/plugins/jquery-3.3.1.min.js}" charset="utf-8">
+
+    </script>
+<script>
+    /*多行删除*/
+    $(function () {
+        $("#deletebatch").click(function () {
+            var str = '';
+            $("input[type ='checkbox']:checked").each(function (index, item) {
+                if ($("input[type ='checkbox']:checked").length-1==index) {
+                    str += $(this).val();
+                } else {
+                    str += $(this).val() + ",";
+                }
+            });
+            $.ajax({
+                type:"post",
+                url:"/driverinformation/drivers/remove/"+str,
+                dataType:"json",
+                success:function () {
+                    layer.msg('删除成功', {
+                        icon: 1,
+                        time: 3000
+                    }, function(){
+                        window.location.reload();
+                    });
+                }
+            })
+        })
+    })
+</script>
+
 </html>

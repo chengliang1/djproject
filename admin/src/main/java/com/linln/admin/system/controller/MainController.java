@@ -101,6 +101,15 @@ public class MainController {
     }
 
     /**
+     * 算法页面
+     * @return
+     */
+    @GetMapping("/floydmap")
+    public String floydmap(){
+        return "/system/main/floydmap";
+    }
+
+    /**
      * 司机招聘
      * @return
      */

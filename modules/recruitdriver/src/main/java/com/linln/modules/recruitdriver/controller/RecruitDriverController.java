@@ -1,9 +1,6 @@
 package com.linln.modules.recruitdriver.controller;
 
 import com.linln.modules.recruitdriver.validator.RecruitDriverValid;
-import com.linln.common.utils.EntityBeanUtil;
-import com.linln.common.utils.ResultVoUtil;
-import com.linln.common.vo.ResultVo;
 import com.linln.modules.recruitdriver.domain.RecruitDriver;
 import com.linln.modules.recruitdriver.service.RecruitDriverService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -49,6 +46,20 @@ public class RecruitDriverController {
         return "/recruitdriver/recruitDriver/index";
     }
 
+    /**
+     * 跳转到详细页面
+     * @param recruitDriver
+     * @param model
+     * @return
+     */
+    @GetMapping("/detail/{id}")
+    @RequiresPermissions("recruitdriver:recruitDriver:detail")
+    public String toDetail(@PathVariable("id") RecruitDriver recruitDriver,Model model){
+        model.addAttribute("recruitDriver",recruitDriver);
+        return "/recruitdriver/recruitDriver/detail";
+    }
+
+
 
     /**
      * 保存添加/修改的数据
@@ -59,13 +70,11 @@ public class RecruitDriverController {
     public String save(@Validated RecruitDriverValid valid, RecruitDriver recruitDriver) {
         System.out.println(recruitDriver.toString());
         recruitDriver.setCreateDate(new Date());
-        recruitDriver.setRecruit_status(1);
+        recruitDriver.setRecruit_status(2);
         // 保存数据
         recruitDriverService.save(recruitDriver);
         return "/system/main/recruitment";
     }
-
-
 
 
 }

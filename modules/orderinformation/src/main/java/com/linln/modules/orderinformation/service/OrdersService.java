@@ -26,6 +26,12 @@ public interface OrdersService {
     Orders getById(Integer id);
 
     /**
+     * 根据id删除
+     * @param id
+     */
+    void deleteById(Integer id);
+
+    /**
      * 保存数据
      * @param orders 实体对象
      */
