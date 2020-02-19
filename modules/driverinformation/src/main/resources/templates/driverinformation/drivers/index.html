@@ -77,8 +77,8 @@
                         <td th:text="${#dicts.keyValue('DRIVER_WORK', item.work)}">司机状态</td>
                         <td th:text="${item.update_time}">最后修改时间</td>
                         <td>
-                            <a class="open-popup" data-title="编辑司机信息管理" th:attr="data-url=@{'/driverinformation/drivers/edit/'+${item.id}}" data-size="auto" href="">编辑</a>
-                            <a class="open-popup" data-title="详细信息" th:attr="data-url=@{'/driverinformation/drivers/detail/'+${item.id}}" data-size="800,600" href="">详细</a>
+                            <a class="open-popup" data-title="编辑司机信息管理" th:attr="data-url=@{'/driverinformation/drivers/edit/'+${item.id}}" data-size="auto" href="#">编辑</a>
+                            <a class="open-popup" data-title="详细信息" th:attr="data-url=@{'/driverinformation/drivers/detail/'+${item.id}}" data-size="800,600" href="#">详细</a>
                             <a class="ajax-get" data-msg="您是否确认删除" th:href="@{'/driverinformation/drivers/delete/'+${item.id}}">删除</a>
                         </td>
                     </tr>
@@ -91,9 +91,7 @@
 <script th:replace="/common/template :: script"></script>
 </body>
 
-    <script th:src="@{/js/plugins/jquery-3.3.1.min.js}" charset="utf-8">
-
-    </script>
+    <script th:src="@{/js/plugins/jquery-3.3.1.min.js}" charset="utf-8"></script>
 <script>
     /*多行删除*/
     $(function () {
@@ -115,7 +113,6 @@
                         icon: 1,
                         time: 3000
                     }, function(){
-                        window.location.reload();
                     });
                 }
             })

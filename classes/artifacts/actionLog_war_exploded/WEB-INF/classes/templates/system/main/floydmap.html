@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+
+    <script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=Ogm5lMiNUrIf2wMNjnHxwAMkTYXnPKuD"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 地图css*/
+
+        /*个人css*/
+        .dynamic-content{
+            background-color: #FFFFFF;
+            padding: 18px;
+        }
+
+        .header{
+            width: 100%;
+            height: 300px;
+            border: 1px solid red;
+        }
+
+        #chuzmap{
+            margin-top: 15px;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            font-family:"微软雅黑";
+        }
+
+        .content{
+            margin-top: 10px;
+            width: 100%;
+            height: 300px;
+        }
+
+        .app1{
+            margin-top: 20px;
+        }
+
+        .left{
+            float: left;
+            width: 50%;
+            height: 300px;
+        }
+
+        .content{
+            width: 80%;
+            height: 40px;
+            border: 1px solid red;
+        }
+
+        .right{
+            float: right;
+            width: 50%;
+            height: 300px;
+            background-color: seagreen;
+        }
+
+
+
+
+    </style>
+</head>
+<body class="dynamic-content">
+<div class="header">
+
+</div>
+
+    <div id="chuzmap">
+
+    </div>
+    <div class="app1">
+        <div class="left">
+            <div class="content">
+                <span id="seatContent"></span>
+            </div>
+            <form action="" id="info">
+                司机A的位置:<input  type="text" name="driverA"  th:placeholder="经度" value="118.320148">
+                            <input type="text" name="driverA" th:placeholder="纬度" value="32.283008">
+                <hr>
+                司机B的位置:<input  type="text" name="driverB"  th:placeholder="经度" value="118.333263">
+                <input type="text" name="driverB"  th:placeholder="纬度" value="32.295859">
+                <hr>
+                司机C的位置:<input  type="text"  name="driverC" th:placeholder="经度" value="118.34433">
+                <input type="text" name="driverC" th:placeholder="纬度" value="32.292379">
+                <hr>
+                用户1的位置:<input  type="text"  name="driver1" th:placeholder="经度" value="118.342282">
+                <input type="text"  name="driver1" th:placeholder="纬度" value="32.282886">
+                <hr>
+                用户2的位置:<input  type="text" name="driver2" th:placeholder="经度" value="118.335527">
+                <input type="text" name="driver2" th:placeholder="纬度" value="32.288075">
+                <hr>
+                用户3的位置:<input  type="text" name="driver3" th:placeholder="经度" value="118.319393">
+                <input type="text"  name="driver3" th:placeholder="纬度" value="32.292013">
+                <hr>
+                <button type="deafult" id="startFlo" class="">开始模拟</button>
+            </form>
+        </div>
+        <div class="right">
+            A到B共有n条路线，最短路长y;
+        </div>
+    </div>
+
+
+
+
+<script th:replace="/common/template :: script"></script>
+
+</body>
+<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=Ogm5lMiNUrIf2wMNjnHxwAMkTYXnPKuD"></script>
+<script th:src="@{/js/plugins/jquery-3.3.1.min.js}" charset="utf-8"></script>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("chuzmap");    // 创建Map实例
+    map.centerAndZoom(new BMap.Point(118.320148, 32.283008), 15);  // 初始化地图,设置中心点坐标和地图级别
+    //添加地图类型控件
+    map.addControl(new BMap.MapTypeControl({
+        mapTypes:[
+            BMAP_NORMAL_MAP,
+            BMAP_HYBRID_MAP
+        ]}));
+    map.setCurrentCity("滁州");          // 设置地图显示的城市 此项是必须设置的
+    map.enableScrollWheelZoom(true);
+
+    //添加司机marker
+    var opts = {
+        width : 20,     // 信息窗口宽度
+        height: 10,     // 信息窗口高度
+        title : "" , // 信息窗口标题
+        enableMessage:true,//设置允许信息窗发送短息
+        message:"发送"
+    };
+
+    var icon1 = new BMap.Icon('/images/mapdriver.png',new BMap.Size(48, 48));
+    var point1 = new BMap.Point(118.320148, 32.283008);
+    var marker1 = new BMap.Marker(point1,{
+        icon:icon1
+    });// 创建标注
+    map.addOverlay(marker1);
+    marker1.enableDragging();
+    var infoWindow1 = new BMap.InfoWindow("司机A", opts);  // 创建信息窗口对象
+    marker1.addEventListener("click", function(){
+        map.openInfoWindow(infoWindow1,point1); //开启信息窗口
+    });
+
+    var icon2 = new BMap.Icon('/images/mapdriver.png',new BMap.Size(48, 48));
+    var point2 = new BMap.Point(118.333263,32.295859);
+    var marker2 = new BMap.Marker(point2,{
+        icon:icon2
+    });// 创建标注
+    map.addOverlay(marker2);
+    marker2.enableDragging();
+    var infoWindow2 = new BMap.InfoWindow("司机B", opts);  // 创建信息窗口对象
+    marker2.addEventListener("click", function(){
+        map.openInfoWindow(infoWindow2,point2); //开启信息窗口
+    });
+
+    var icon3 = new BMap.Icon('/images/mapdriver.png',new BMap.Size(48, 48));
+    var point3 = new BMap.Point(118.34433,32.292379);
+    var marker3 = new BMap.Marker(point3,{
+        icon:icon3
+    });// 创建标注
+    map.addOverlay(marker3);
+    marker3.enableDragging();
+    var infoWindow3 = new BMap.InfoWindow("司机C", opts);  // 创建信息窗口对象
+    marker3.addEventListener("click", function(){
+        map.openInfoWindow(infoWindow3,point3); //开启信息窗口
+    });
+
+
+    //添加用户maker
+    var icon4 = new BMap.Icon('/images/mapuser.png',new BMap.Size(48, 48));
+    var point4 = new BMap.Point(118.342282, 32.282886);
+    var marker4 = new BMap.Marker(point4,{
+        icon:icon4
+    });// 创建标注
+    map.addOverlay(marker4);
+    marker4.enableDragging();
+    var infoWindow4 = new BMap.InfoWindow("用户1", opts);  // 创建信息窗口对象
+    marker4.addEventListener("click", function(){
+        map.openInfoWindow(infoWindow4,point4); //开启信息窗口
+    });
+
+    var icon5 = new BMap.Icon('/images/mapuser.png',new BMap.Size(48, 48));
+    var point5 = new BMap.Point(118.335527,32.288075);
+    var marker5 = new BMap.Marker(point5,{
+        icon:icon5
+    });// 创建标注
+    map.addOverlay(marker5);
+    marker5.enableDragging();
+    var infoWindow5 = new BMap.InfoWindow("用户2", opts);  // 创建信息窗口对象
+    marker5.addEventListener("click", function(){
+        map.openInfoWindow(infoWindow5,point5); //开启信息窗口
+    });
+
+    var icon6 = new BMap.Icon('/images/mapuser.png',new BMap.Size(48, 48));
+    var point6 = new BMap.Point(118.319393,32.292013);
+    var marker6 = new BMap.Marker(point6,{
+        icon:icon6
+    });// 创建标注
+    map.addOverlay(marker6);
+    marker6.enableDragging();
+    var infoWindow6 = new BMap.InfoWindow("用户3", opts);  // 创建信息窗口对象
+    marker6.addEventListener("click", function(){
+        map.openInfoWindow(infoWindow6,point6); //开启信息窗口
+    });
+
+
+    //鼠标点击获取坐标
+    map.addEventListener("click",function(e){
+        $("#seatContent").html("该位置经度:"+e.point.lng+"纬度:"+e.point.lat);
+    });
+
+    var dataStr = '';
+    var Aj = $("input[name='driverA']")[0].value;
+    var Aw = $("input[name='driverA']")[1].value;
+
+    var Bj = $("input[name='driverB']")[0].value;
+    var Bw = $("input[name='driverB']")[1].value;
+
+    var Cj = $("input[name='driverC']")[0].value;
+    var Cw = $("input[name='driverC']")[1].value;
+
+    var u1j = $("input[name='driver1']")[0].value;
+    var u1w = $("input[name='driver1']")[1].value;
+
+    var u2j = $("input[name='driver2']")[0].value;
+    var u2w = $("input[name='driver2']")[1].value;
+
+    var u3j = $("input[name='driver3']")[0].value;
+    var u3w = $("input[name='driver3']")[1].value;
+
+
+    dataStr= Aj+"_"+Aw+"_"+Bj+"_"+Bw+"_"+Cj+"_"+Cw+"_"+u1j+"_"+u1w+"_"+u2j+"_"+u2w+"_"+u3j+"_"+u3w
+    //开始模拟
+    $("#startFlo").click(function () {
+        console.log("------")
+        $.ajax({
+            type:"post",
+            url:"/floyd",
+            success:function (res) {
+                console.log(JSON.stringify(res))
+            },
+            error:function (error) {
+                console.log(JSON.stringify(error) + "未知错误");
+            }
+        });
+    });
+
+</script>
+</html>

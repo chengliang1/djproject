@@ -1,5 +1,6 @@
 package com.linln.admin.system.controller;
 
+import com.linln.admin.system.utils.Floyd;
 import com.linln.admin.system.validator.UserValid;
 import com.linln.common.constant.AdminConst;
 import com.linln.common.data.URL;
@@ -20,13 +21,11 @@ import com.linln.modules.system.service.UserService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
@@ -173,6 +172,21 @@ public class MainController {
         User user = ShiroUtil.getSubject();
         model.addAttribute("user", user);
         return "/system/main/userInfo";
+    }
+
+    /**
+     * 算法计算
+     * @return
+     */
+    @PostMapping("/floyd")
+    @RequiresPermissions("index")
+    public ResponseEntity<String> floyd(String str){
+        /*System.out.println(str+"---");
+        String[] s = str.split("_");
+        String driverAj = s[0];
+        System.out.println(driverAj);*/
+        List<int[]> result = Floyd.getResult();
+        return ResponseEntity.ok("ok");
     }
 
     /**
