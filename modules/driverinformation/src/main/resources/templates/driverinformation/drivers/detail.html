@@ -20,20 +20,32 @@
                 <tr>
                     <th>真实姓名</th>
                     <td th:text="${drivers.name}"></td>
-                    <th>身份证号</th>
-                    <td th:text="${drivers.IdCard}"></td>
+                    <th>手机号</th>
+                    <td th:text="${drivers.phone}"></td>
                 </tr>
                 <tr>
+                    <th>身份证号</th>
+                    <td th:text="${drivers.IdCard}"></td>
                     <th>身份证照片</th>
-                    <td th:text="${drivers.IdCard_image}"></td>
+                    <td><img th:src="${drivers.IdCard_image}" alt=""></td>
+                </tr>
+                <tr>
+                    <th>用户性别</th>
+                    <td th:text="${#dicts.keyValue('USER_SEX',drivers.sex)}"></td>
                     <th>车品牌</th>
                     <td th:text="${drivers.car_brand}"></td>
+                </tr>
+                <tr>
+                    <th>余额</th>
+                    <td th:text="${drivers.money}"></td>
+                    <th>司机状态</th>
+                    <td th:text="${#dicts.keyValue('DRIVER_WORK',drivers.work)}"></td>
                 </tr>
                 <tr>
                     <th>车颜色</th>
                     <td th:text="${drivers.car_color}"></td>
                     <th>司机星级</th>
-                    <td th:text="${drivers.driver_star}"></td>
+                    <td th:text="${#dicts.keyValue('DRIVER_STAR',drivers.driver_star)}"></td>
                 </tr>
                 <tr>
                     <th>订单次数</th>

@@ -33,23 +33,23 @@
                     <th>联系电话</th>
                     <td th:text="${recruitDriver.phone}"></td>
                     <th>性别</th>
-                    <td th:text="${recruitDriver.sex}"></td>
+                    <td th:text="${#dicts.keyValue('USER_SEX',recruitDriver.sex)}"></td>
                 </tr>
                 <tr>
                     <th>驾龄</th>
                     <td th:text="${recruitDriver.drive_time}"></td>
                     <th>是否从事过代驾行业</th>
-                    <td th:text="${recruitDriver.work}"></td>
+                    <td th:text="${#dicts.keyValue('WORK',recruitDriver.work)}"></td>
                 </tr>
                 <tr>
                     <th>工作时段</th>
-                    <td th:text="${recruitDriver.work_time}"></td>
+                    <td th:text="${#dicts.keyValue('WORK_TIME',recruitDriver.work_time)}"></td>
                     <th>准驾类型</th>
                     <td th:text="${recruitDriver.driver_type}"></td>
                 </tr>
                 <tr>
                     <th>申请状态</th>
-                    <td th:text="${recruitDriver.recruit_status}"></td>
+                    <td th:text="${#dicts.keyValue('RECRUIT',recruitDriver.recruit_status)}"></td>
                     <th>申请时间</th>
                     <td th:text="${#dates.format(recruitDriver.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
                 </tr>

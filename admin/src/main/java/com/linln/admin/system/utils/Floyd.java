@@ -62,57 +62,19 @@ public class Floyd {
             strList.add(str);
             System.out.println();
         }
-       /* strList.forEach(str->{
-             Arrays.stream(str).forEach(System.out::println);
-        });*/
         System.out.println("Path:");
         for(int i = 0; i < matrixOrder; i++){
             int patharr[] = new int[matrixOrder];
             for(int j = 0; j < matrixOrder; j++){
                 patharr[j] = path[i][j];
-                System.out.println("-------"+patharr[j]);
-                System.out.print(path[i][j]+"\t");
+                //System.out.print(path[i][j]+"\t");
             }
             pathList.add(patharr);
             System.out.println();
         }
-
-        return pathList;
+        return strList;
     }
 
 
-    public static void main(String[] args) {
-      /*  floyd();
-        System.out.println("Arcs:");
-
-        List<int[]> strList = new ArrayList<>();
-        List<int[]> pathList = new ArrayList<>();
-        Map<String,List<int[]>> map = new HashMap<>();
-        for(int i = 0; i < matrixOrder; i++){
-            int str[]=new int[matrixOrder];
-            for(int j = 0; j < matrixOrder; j++){
-                str[j] = arcs[i][j];
-                System.out.print(arcs[i][j]+"\t");
-            }
-            strList.add(str);
-            System.out.println();
-        }
-       *//* strList.forEach(str->{
-             Arrays.stream(str).forEach(System.out::println);
-        });*//*
-        System.out.println("Path:");
-        for(int i = 0; i < matrixOrder; i++){
-            int patharr[] = new int[matrixOrder];
-            for(int j = 0; j < matrixOrder; j++){
-                patharr[j] = path[i][j];
-                System.out.print(path[i][j]+"\t");
-            }
-            pathList.add(patharr);
-            System.out.println();
-        }
-        map.put("Arcs",strList);
-        map.put("Path",pathList);
-        System.out.println(getResult());*/
-    }
 
 }

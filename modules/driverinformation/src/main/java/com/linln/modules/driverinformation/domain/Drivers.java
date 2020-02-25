@@ -2,6 +2,7 @@ package com.linln.modules.driverinformation.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -61,18 +62,16 @@ public class Drivers implements Serializable {
     @JsonIgnore
     private Integer driver_time;
     // 创建时间
-    @JsonIgnore
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date create_time;
     // 最后修改时间
-    @JsonIgnore
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date update_time;
     // 简介
     private String remarks;
 
     //系统需要
-    @JsonIgnore
+    @CreatedDate
     private Date createDate;
 
 }

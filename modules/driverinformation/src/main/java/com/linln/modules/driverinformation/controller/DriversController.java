@@ -17,10 +17,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * @author 程亮
@@ -88,6 +85,7 @@ public class DriversController {
         }
 
         // 保存数据
+        drivers.setUpdate_time(new Date());
         driversService.save(drivers);
         return ResultVoUtil.SAVE_SUCCESS;
     }
@@ -109,7 +107,6 @@ public class DriversController {
      */
     @GetMapping("/delete/{id}")
     @ResponseBody
-    @RequiresPermissions("driverinformation:drivers:delete")
     public ResultVo deleteDriversById(@PathVariable("id") Integer id){
         driversService.deleteById(id);
         return ResultVoUtil.success("删除成功");

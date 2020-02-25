@@ -25,10 +25,27 @@
             </div>
         </div>
         <div class="layui-form-item">
+            <label class="layui-form-label">手机号</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="phone" placeholder="请输入手机号" th:value="${drivers?.phone}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">选择性别</label>
+            <div class="layui-input-inline">
+                <input type="radio" name="sex" value="1" title="男" checked><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><div>男</div></div>
+                <input type="radio" name="sex" value="2" title="女" th:checked="${drivers?.sex} eq 2"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><div>女</div></div>
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">身份证照片</label>
             <div class="layui-input-inline">
-                <input class="layui-input" type="text" name="IdCard_image" placeholder="请输入身份证照片" th:value="${drivers?.IdCard_image}">
+                <button type="button" class="layui-btn upload-image" name="image[]" up-field="path" up-url="/upload/image">
+                    <i class="layui-icon"></i>上传图片
+                </button>
+                <input type="hidden" value="" id="url-img" name="IdCard_image">
             </div>
+            <div class="upload-show"></div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">车品牌</label>
@@ -40,6 +57,18 @@
             <label class="layui-form-label">车颜色</label>
             <div class="layui-input-inline">
                 <input class="layui-input" type="text" name="car_color" placeholder="请输入车颜色" th:value="${drivers?.car_color}">
+            </div>
+        </div>
+        <div class="layui-form-item" style="display:none">
+            <label class="layui-form-label">余额</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="money" placeholder="" th:value="${drivers?.money}">
+            </div>
+        </div>
+        <div class="layui-form-item" style="display:none">
+            <label class="layui-form-label">司机状态</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="work" placeholder="" th:value="${drivers?.work}">
             </div>
         </div>
         <div class="layui-form-item">
@@ -63,13 +92,13 @@
         <div class="layui-form-item">
             <label class="layui-form-label">创建时间</label>
             <div class="layui-input-inline">
-                <input class="layui-input" type="text" name="create_time" placeholder="请输入创建时间" th:value="${drivers?.create_time}">
+                <input class="layui-input" type="text" name="create_time" placeholder="" th:value="${drivers?.create_time}">
             </div>
         </div>
-        <div class="layui-form-item">
+        <div class="layui-form-item" style="display:none">
             <label class="layui-form-label">最后修改时间</label>
             <div class="layui-input-inline">
-                <input class="layui-input" type="text" name="update_time" placeholder="请输入最后修改时间" th:value="${drivers?.update_time}">
+                <input class="layui-input" type="text" name="update_time" placeholder="" th:value="${drivers?.update_time}">
             </div>
         </div>
         <div class="layui-form-item">
@@ -84,6 +113,7 @@
         </div>
     </form>
 </div>
-<script th:replace="/common/template :: script"></script>
+    <script th:replace="/common/template :: script"></script>
+    <script type="text/javascript" th:src="@{/js/build.js}"></script>
 </body>
 </html>

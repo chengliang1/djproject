@@ -1,6 +1,7 @@
 package com.linln.admin.system.controller;
 
 import com.linln.admin.system.utils.Floyd;
+import com.linln.admin.system.utils.JsonUtils;
 import com.linln.admin.system.validator.UserValid;
 import com.linln.common.constant.AdminConst;
 import com.linln.common.data.URL;
@@ -180,13 +181,10 @@ public class MainController {
      */
     @PostMapping("/floyd")
     @RequiresPermissions("index")
-    public ResponseEntity<String> floyd(String str){
-        /*System.out.println(str+"---");
-        String[] s = str.split("_");
-        String driverAj = s[0];
-        System.out.println(driverAj);*/
+    public ResponseEntity<String> floyd(){
         List<int[]> result = Floyd.getResult();
-        return ResponseEntity.ok("ok");
+        String res = JsonUtils.serialize(result);
+        return ResponseEntity.ok(res);
     }
 
     /**
