@@ -57,9 +57,9 @@
         }
 
 
-        .cl-navt .cl-top li a:hover{
+       /* .cl-navt .cl-top li a:hover{
             color: #00B83F;
-        }
+        }*/
 
         /*底部*/
         .cl-footer{
@@ -191,11 +191,11 @@
     </div>
     <div class="cl-navt">
         <ul class="cl-top">
-            <li><a th:href="@{/index}">首页</a></li>
-            <li><a data-anchor="recruitment" th:href="@{/recruitment}">司机招聘</a></li>
-            <li><a th:href="@{/answer}">常见问答</a></li>
-            <li><a th:href="@{/dynamic}">新闻动态</a></li>
-            <li><a th:href="@{/linkus}">联系我们</a></li>
+            <li><a id="href-first" th:href="@{/index}">首页</a></li>
+            <li><a id="href-second" th:href="@{/recruitment}">司机招聘</a></li>
+            <li><a id="href-third" th:href="@{/answer}">常见问答</a></li>
+            <li><a id="href-four" th:href="@{/dynamic}">新闻动态</a></li>
+            <li><a id="href-five" th:href="@{/linkus}">联系我们</a></li>
         </ul>
     </div>
 </div>
@@ -275,4 +275,5 @@
 </div>
 
 </body>
+
 </html>

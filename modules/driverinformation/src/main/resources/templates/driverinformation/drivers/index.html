@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="timo-table-wrap">
-                <table class="layui-table timo-table">
+                <table id="dataTable" class="layui-table timo-table">
                     <thead>
                     <tr>
                         <th class="timo-table-checkbox">
@@ -91,7 +91,7 @@
 <script th:replace="/common/template :: script"></script>
 </body>
 
-    <script th:src="@{/js/plugins/jquery-3.3.1.min.js}" charset="utf-8"></script>
+<script th:src="@{/js/plugins/jquery-3.3.1.min.js}" charset="utf-8"></script>
 <script>
     /*多行删除*/
     $(function () {
@@ -119,6 +119,20 @@
             })
         })
     })
+</script>
+
+<script>
+    var tb = document.getElementById('dataTable');
+    var rows = tb.rows;
+    for (var i = 1;i<rows.length;i++){
+        for (var j = 0; j<rows[i].cells.length;j++){
+            if (rows[i].cells[10].innerHTML == '空闲'){
+                $(rows[i].cells[10]).css("color","green");
+            }else {
+                $(rows[i].cells[10]).css("color","red");
+            }
+        }
+    }
 </script>
 
 </html>

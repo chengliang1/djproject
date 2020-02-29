@@ -127,6 +127,20 @@ public class OrdersController {
         return ResultVoUtil.success("删除成功");
     }
 
+    /**
+     *  小程序订单取消
+     * @return
+     */
+    @GetMapping("/cancel")
+    public ResponseEntity<Boolean> programCancel(HttpServletRequest request, HttpServletResponse response){
+        String oldId = request.getParameter("id");
+        Integer id = Integer.parseInt(oldId);
+        Drivers drivers = driversService.getById(id);
+        drivers.setWork(2);
+        driversService.save(drivers);
+        return ResponseEntity.ok(true);
+    }
+
 
     /**
      * 小程序订单保存
@@ -188,17 +202,21 @@ public class OrdersController {
             user.setBalance(balance);
             userService.save(user);
 
-            //根据司机名找出司机信息并更新money
+            //根据司机名找出司机信息并更新money和订单次数、司机状态
             Drivers drivers = driversService.getById(id);
             Float money1 = drivers.getMoney();
             Float money = order_price + money1;
             drivers.setMoney(money);
+            Integer oldorder_num = drivers.getOrder_num();
+            Integer order_num = oldorder_num + 1;
+            drivers.setOrder_num(order_num);
+            drivers.setWork(2);
             driversService.save(drivers);
 
 
         } catch (ParseException e) {
             e.printStackTrace();
-            System.out.println("日期转换错误");
+            //System.out.println("日期转换错误");
         }
         return ResponseEntity.ok(true);
     }

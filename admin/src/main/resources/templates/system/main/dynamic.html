@@ -74,7 +74,7 @@
             float: left;
             font-size: 16px;
             color: #000;
-            margin-left: 40px;
+            margin-left: 3%;
         }
 
         .cont-time{
@@ -177,14 +177,14 @@
         <div class="blocks">
             <div class="block">
                 <div class="cont">
-                    <img class="cont-img"  src="../images/dynamic1.png" alt="感恩节活动">
+                    <img class="cont-img"  src="../images/grateful.jpg" alt="感恩节活动">
                     <div class="head">
-                        久候代驾感恩卡上线,敬情谊常相聚!
+                        疫情对中国网约车行业的影响
                         <span class="cont-time">
-                            2019/12/11
+                            2020/2/21
                         </span>
                         <div class="txt">
-                            久候代驾感恩卡上线,敬情谊常相聚!
+                            疫情对中国网约车行业的影响
                         </div>
                         <a th:href="@{/grateful}" class="cont-btn">查看详情</a>
                     </div>
@@ -192,14 +192,14 @@
             </div>
             <div class="block">
                 <div class="cont">
-                    <img class="cont-img"  src="../images/dynamic2.jpeg" alt="">
+                    <img class="cont-img"  src="../images/saftey.jpg" alt="">
                     <div class="head">
-                        南京司机代驾途中溺亡，怎样叫代驾才是安全的？
+                        疫情期间，这样的网约车坐着才安心
                         <span class="cont-time">
-                            2017/12/7
+                            2020/2/25
                         </span>
                         <div class="txt">
-                            南京司机代驾途中溺亡，怎样叫代驾才是安全的？
+                            疫情期间，这样的网约车坐着才安心
                         </div>
                         <a th:href="@{/safety}" class="cont-btn">查看详情</a>
                     </div>
@@ -209,12 +209,12 @@
                 <div class="cont">
                     <img class="cont-img"  src="../images/dynamic3.png" alt="">
                     <div class="head">
-                        公司成立2个月屡屡上头版，他是怎么做到的？
+                        久候代驾公司成立2个月屡屡上头版，他是怎么做到的？
                         <span class="cont-time">
                             2020/01/01
                         </span>
                         <div class="txt">
-                            公司成立2个月屡屡上头版，他是怎么做到的？
+                            久候代驾公司成立2个月屡屡上头版，他是怎么做到的？
                         </div>
                         <a href="" class="cont-btn">查看详情</a>
                     </div>
@@ -224,7 +224,7 @@
                 <div class="cont">
                     <img class="cont-img"  src="../images/dynamic4.png" alt="">
                     <div class="head">
-                        久候代驾携手上海交通部门，让道路安全深入人心
+                        久候代驾携手滁州交通部门，让道路安全深入人心
                         <span class="cont-time">
                             2020/01/03
                         </span>
@@ -254,6 +254,12 @@
 
 <script th:replace="/common/template :: script"></script>
 
+<script th:src="@{/js/plugins/jquery-3.3.1.min.js}" charset="utf-8"></script>
+<script>
+    $(function () {
+        $("#href-four").css("color","#00B83F")
+    });
+</script>
 </body>
 </html>
 

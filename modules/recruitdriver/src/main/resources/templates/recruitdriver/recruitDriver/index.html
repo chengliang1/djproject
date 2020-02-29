@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="timo-table-wrap">
-                <table class="layui-table timo-table">
+                <table id="dataTable" class="layui-table timo-table">
                     <thead>
                     <tr>
                         <th class="timo-table-checkbox">
@@ -86,4 +86,19 @@
     </div>
 <script th:replace="/common/template :: script"></script>
 </body>
+
+<script th:src="@{/js/plugins/jquery-3.3.1.min.js}" charset="utf-8"></script>
+<script>
+    var tb = document.getElementById('dataTable');
+    var rows = tb.rows;
+    for (var i = 1;i<rows.length;i++){
+        for (var j = 0; j<rows[i].cells.length;j++){
+            if (rows[i].cells[8].innerHTML == '已处理'){
+                $(rows[i].cells[8]).css("color","green");
+            }else {
+                $(rows[i].cells[8]).css("color","red");
+            }
+        }
+    }
+</script>
 </html>
