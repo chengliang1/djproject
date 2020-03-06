@@ -121,7 +121,7 @@ public class OrdersController {
      */
     @GetMapping("/delete/{id}")
     @ResponseBody
-    @RequiresPermissions("orderinformation:orders:delete")
+    //@RequiresPermissions("orderinformation:orders:delete")
     public ResultVo deleteOrderById(@PathVariable("id") Integer id){
         ordersService.deleteById(id);
         return ResultVoUtil.success("删除成功");
