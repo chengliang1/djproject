@@ -76,7 +76,6 @@ public class RecruitDriverController {
      * @param valid 验证对象
      */
     @PostMapping("/save")
-    //@RequiresPermissions({"recruitdriver:recruitDriver:add", "recruitdriver:recruitDriver:edit"})
     public String save(@Validated RecruitDriverValid valid, RecruitDriver recruitDriver) {
         recruitDriver.setCreateDate(new Date());
         recruitDriver.setRecruit_status(2);

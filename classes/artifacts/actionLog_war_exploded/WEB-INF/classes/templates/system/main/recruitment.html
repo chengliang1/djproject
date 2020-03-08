@@ -142,10 +142,10 @@
                 <form th:action="@{/recruitdriver/recruitDriver/save}" method="post">
                     <div class="space-row">
                         <input class="input-type2" type="date"  placeholder="领取驾驶证日期" >
-                        <input class="input-type1" type="text" placeholder="请输入姓名" name="drivername">
+                        <input class="input-type1" type="text" id="name" placeholder="请输入姓名" name="drivername">
                     </div>
                     <div class="space-row">
-                        <input class="input-type2 laydate" type="text"  placeholder="请输入手机号" name="phone">
+                        <input class="input-type2" type="text" id="phonenum"  placeholder="请输入手机号" name="phone">
                         <div>
                             <select  style="font-size: 16px"  name="sex">
                                 <option value="" style="display:none">性别</option>
@@ -180,7 +180,7 @@
                                 <option value="2">晚上</option>
                                 <option value="3">全天</option>
                             </select>
-                            <input class="input-type1" type="text" name="licence_num"  placeholder="请输入驾驶证编号">
+                            <input class="input-type1" type="text" id="licencenum" name="licence_num"  placeholder="请输入驾驶证编号">
                         </div>
                     </div>
                     <div class="space-row">
@@ -195,7 +195,7 @@
                             <option value="a2">A2</option>
                             <option value="a3">A3</option>
                         </select>
-                        <input class="input-type2" type="text"  name="IdCard" placeholder="请输入身份证号">
+                        <input class="input-type2" type="text" id="idcard"  name="IdCard" placeholder="请输入身份证号">
                     </div>
                    <!-- <div class="space-row">
                         <div class="layui-form-item">
@@ -208,7 +208,7 @@
                             <div class="upload-show"></div>
                         </div>
                     </div>-->
-                    <button class="btn-ljtj" type="submit" onclick="applysuccess()">
+                    <button class="btn-ljtj" type="submit" onclick="return validate()">
                         <img src="/images/btn-ljtj.png" alt="">
                     </button>
 
@@ -222,17 +222,58 @@
 
 <script th:replace="/common/template :: script"></script>
 
-<script>
-    function applysuccess() {
-        alert("报名成功")
-    }
-</script>
-
 <script th:src="@{/js/plugins/jquery-3.3.1.min.js}" charset="utf-8"></script>
+<script th:src="@{/lib/layui-v2.3.0/layui.js}"></script>
 <script>
+
     $(function () {
-            $("#href-second").css("color","#00B83F")
+        $("#href-second").css("color","#00B83F")
     });
+
+    //验证名称
+    function isChinaName(name) {
+        var pattern = /^[\u4E00-\u9FA5]{1,6}$/;
+        return pattern.test(name);
+    }
+
+    // 验证手机号
+    function isPhoneNo(phonenum) {
+        var pattern = /^[1][3,4,5,7,8][0-9]{9}$/;
+        return pattern.test(phonenum);
+    }
+
+    // 验证身份证
+    function isCardNo(card) {
+        var pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        return pattern.test(card);
+    }
+
+    function validate() {
+        if(isChinaName($.trim($('#name').val())) == false){
+            alert("用户名为空或者不合法");
+            $('#name').focus();
+            return false;
+        }else if ($.trim($('#phonenum').val()).length == 0){
+            alert("手机号不能为空");
+            $('#phonenum').focus();
+            return false;
+        }else if ($.trim($('#licencenum').val()).length == 0){
+            alert("驾驶证编号不能为空");
+            $('#licencenum').focus();
+            return false;
+        }else if(isPhoneNo($.trim($('#phonenum').val()) == false)){
+            alert("手机号不正确");
+            $('#phonenum').focus();
+            return false;
+        }else if(isCardNo($.trim($('#idcard').val())) == false){
+            alert("身份证号不正确");
+            $('#idcard').focus();
+            return false;
+        }else {
+            alert("报名成功");
+            return true;
+        }
+    }
 </script>
 
 
