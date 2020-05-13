@@ -65,7 +65,7 @@ public class MenuController {
         Sort sort = new Sort(Sort.Direction.ASC, "sort");
         List<Menu> list = menuService.getListByExample(example, sort);
 
-        // TODO: 2019/2/25 菜单类型处理方案
+        // TODO: 2019/12/25 菜单类型处理方案
         list.forEach(editMenu -> {
             String type = String.valueOf(editMenu.getType());
             editMenu.setRemark(DictUtil.keyValue("MENU_TYPE", type));

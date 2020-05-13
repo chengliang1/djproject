@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body>
+    <div class="timo-detail-page">
+        <div class="timo-detail-title">基本信息</div>
+        <table class="layui-table timo-detail-table">
+            <colgroup>
+                <col width="100px"><col>
+                <col width="100px"><col>
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th>主键ID</th>
+                    <td th:text="${orders.id}"></td>
+                    <th>用户</th>
+                    <td th:text="${orders.username}"></td>
+                </tr>
+                <tr>
+                    <th>司机姓名</th>
+                    <td th:text="${orders.name}"></td>
+                    <th>订单日期</th>
+                    <td th:text="${orders.order_date}"></td>
+                </tr>
+                <tr>
+                    <th>出发地</th>
+                    <td th:text="${orders.origin}"></td>
+                    <th>目的地</th>
+                    <td th:text="${orders.destination}"></td>
+                </tr>
+                <tr>
+                    <th>路程</th>
+                    <td th:text="${orders.distance}"></td>
+                    <th>订单类型</th>
+                    <td th:text="${orders.order_type}"></td>
+                </tr>
+                <tr>
+                    <th>订单费用</th>
+                    <td th:text="${orders.order_price}"></td>
+                    <th>星级评价</th>
+                    <td th:text="${orders.evaluation_star}"></td>
+                </tr>
+                <tr>
+                    <th>文字评价</th>
+                    <td th:text="${orders.evaluation_text}"></td>
+                    <th>创建日期</th>
+                    <td th:text="${orders.createDate}"></td>
+                </tr>
+                <tr>
+                    <th>备注</th>
+                    <td th:text="${orders.remark}" colspan="3"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<script th:replace="/common/template :: script"></script>
+</body>
+</html>

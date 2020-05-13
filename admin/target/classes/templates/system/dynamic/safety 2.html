@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*个人css*/
+        .about-banner {
+            background: #1ab11a;
+            overflow: hidden;
+        }
+
+        .about-banner img {
+            margin: 20px auto 0;
+            display: block;
+        }
+
+        .dynamic-content{
+            background-color: #FFFFFF;
+            padding: 18px;
+        }
+
+        .dynamic-main{
+            width: 80%;
+            height: 1370px;
+            border: 1px solid #e4e4e4;
+            margin: 20px 10% 0 10%;
+        }
+
+        .ui-taps{
+            height: 56px;
+            border-bottom: 1px solid #e4e4e4;
+        }
+
+        .ui-tap {
+            font-size: 14px;
+            width: 122px;
+            cursor: pointer;
+            color: #8d8d8d;
+            text-align: center;
+            line-height: 56px;
+            border-right: 1px solid #e4e4e4;
+            border-top: 3.5px solid #08b548;
+        }
+
+        .title{
+            width: 100%;
+            height: 55px;
+            line-height: 50px;
+            font-weight: bold;
+            font-size: 24px;
+            border-bottom: 1px solid #ebebeb;
+        }
+
+        .main{
+            padding: 40px 10px;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        p{
+            text-indent: 2em;
+        }
+
+        .main span{
+            color: deepskyblue;
+        }
+
+
+
+
+    </style>
+</head>
+<body class="dynamic-content">
+<div th:replace="/common/footer :: head"></div>
+<div th:replace="/common/dynamichead :: dynamicheader"></div>
+<div class="dynamic-main">
+    <div class="ui-taps">
+        <div class="ui-tap">
+            久候代驾动态
+        </div>
+    </div>
+    <h1 class="title">
+        疫情期间，这样的网约车坐着才安心
+    </h1>
+    <div class="main">
+        <p>新冠肺炎疫情的发生，对网约车行业产生了较大影响，用户对于<span>网约车</span>的安全性有了更高的要求，为了全面保障司机与
+            乘客的驾乘安全，华夏出行旗下网约车平台华滴新能源打响“抗疫”行动计划， 提供多种安全保障，确保司机上岗无风险，乘客打车不担忧。</p>
+        <p><img class="safe-img" src="/images/saftey.jpg" alt=""></p>
+        <p>第一重保障</p>
+        <p>车内封闭式消毒 乘坐放心</p>
+        <p>华夏出行在原有网约车整备环节中新增消毒环节，采用车辆专用消毒液，对驾驶员密切接触的部位进行全面消毒，整备后车辆会标注“已消毒”及消毒时间。</p>
+        <p> 同时，车辆的车钥匙、行驶本等消毒完之后，采用专用密封袋进行封装，在发车时，还会进行二次消毒，实现无菌交车，让每一位乘客放心乘坐。</p>
+        <p>第二重保障</p>
+        <p>车外粉尘沾染区域消毒 上车安心</p>
+        <p>发车前，工作人员在容易沾染粉尘的轮胎、挡风玻璃雨刷器等部位进行消毒，减少外部病毒侵入的概率，并对乘客上车时所接触的车门把手也进行了细致消毒，确保接触部位无菌。</p>
+        <p> 第三重保障</p>
+        <p>安装车内隔离膜 服务舒心</p>
+        <p>在落实“司机必须戴口罩、司机上报体温、车内勤消毒和勤通风”等4项防疫标准的基础上，进一步防止飞沫传播，华夏出行自行采购隔离膜，陆续为坚守服务的网约车免费安装车内隔离膜。安装后，车内形成一个简易的安全舱，乘客上车后能够直观感受到与司机的”有效隔离“，同时防止驾驶员与乘客交叉感染。</p>
+        <p>第四重保障</p>
+        <p>卫生消毒知识培训 专业省心</p>
+        <p>第一步：驾驶员佩戴口罩，对车辆外部进行消毒之后再上车；</p>
+        <p> 第二步：上车后用酒精洗手液清洗手部；</p>
+        <p>第三步：乘客下车后及时开窗通风，置换车内空气，并对后排座椅擦洗消毒；</p>
+        <p> 第四步：驾驶员下班后对车内外进行全面消毒。</p>
+        <p>第五重保障</p>
+        <p>变应急预案为制度保障 严格用心</p>
+        <p>网约车作为公共交通的一个重要组成部分，华夏出行将长期重视车内空间的清洁消毒，正式将车辆消毒卫生纳入到收发车与库存车管理制度中来，不仅是疫情期间，以后也会实现卫生交车，保障乘客的出行安全.</p>
+    </div>
+</div>
+<br><br><br>
+
+<div th:replace="/common/footer :: foot"></div>
+
+
+<script th:replace="/common/template :: script"></script>
+<script th:src="@{/js/plugins/jquery-3.3.1.min.js}" charset="utf-8"></script>
+<script>
+    $(function () {
+        $("#href-four").css("color","#00B83F")
+    });
+</script>
+</body>
+</html>

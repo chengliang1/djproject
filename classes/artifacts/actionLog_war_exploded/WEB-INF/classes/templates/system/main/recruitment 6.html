@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*个人css*/
+        .main .recruitbanner{
+            height: 350px;
+            position: relative;
+            background-image: url(/images/top.jpg);
+            background-size: 100% 350px;
+            background-repeat: no-repeat;
+            text-align: center;
+        }
+
+        .recruitbanner-img{
+            position: relative;
+            top: 56%;
+            left: 1%;
+        }
+
+        .main .recruitform{
+            width: 100%;
+            height: 506px;
+            position: relative;
+            background-image: url(/images/recruitform.jpg);
+            background-size: 100% 626px;
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .form-main{
+            border: 0;
+            height: 456px;
+        }
+
+        .form-content{
+            width: 56%;
+            height: 456px;
+            margin: 0 auto;
+        }
+
+        .space-row{
+            width: 100%;
+            height: 48px;
+            margin-top: 20px;
+        }
+
+        input::-webkit-input-placeholder {
+            /* placeholder字体大小  */
+            font-size: 16px;
+            /* placeholder位置  */
+            position: relative;
+            left: 20px;
+              }
+
+        .input-type1{
+            float: right;
+            width: 48%;
+            height: 48px;
+            border-radius: 10px;
+            background-color: #FFFFFF;
+            outline: none;
+            border: none;
+        }
+
+        .input-type2{
+            float: left;
+            width: 48%;
+            height: 48px;
+            font-size: 16px;
+            border-radius: 10px;
+            background-color: #FFFFFF;
+            outline: none;
+            border: none;
+        }
+
+        .input-type3{
+            float: right;
+            width: 22%;
+            height: 48px;
+            border-radius: 10px;
+            background-color: #FFFFFF;
+            outline: none;
+            border: none;
+        }
+
+        select{
+            float: right;
+            width: 22%;
+            height: 48px;
+            margin-right: 14px;
+            border-radius: 10px;
+            background-color: #FFFFFF;
+            outline: none;
+            border: none;
+            padding: 0 2%;
+            background-image: url(/images/select.png);
+            background-repeat: no-repeat;
+            background-position: 94% 45%;
+            /*清除默认的select选择框样式*/
+            -moz-appearance:none;
+            -webkit-appearance:none;
+        }
+
+        .select-left{
+            float: left;
+        }
+
+        .select-right{
+            width: 46%;
+        }
+
+        .btn-ljtj{
+            padding: 0;
+            border: 0;
+            outline: none;
+            border-radius: 12px;
+            position: relative;
+            top: 58px;
+        }
+
+
+
+    </style>
+</head>
+<body class="timo-layout-page">
+<div th:replace="/common/footer :: head"></div>
+<div class="main">
+    <div class="recruitbanner">
+        <img class="recruitbanner-img" src="/images/zxbm.png" alt="">
+    </div>
+    <div class="recruitform">
+        <div class="form-main">
+            <div class="form-content">
+                <img src="/images/index-tit.png" alt="">
+                <br><br>
+                <form th:action="@{/recruitdriver/recruitDriver/save}" method="post">
+                    <div class="space-row">
+                        <input class="input-type2" type="date"  placeholder="领取驾驶证日期" >
+                        <input class="input-type1" type="text" id="name" placeholder="请输入姓名" name="drivername">
+                    </div>
+                    <div class="space-row">
+                        <input class="input-type2" type="text" id="phonenum"  placeholder="请输入手机号" name="phone">
+                        <div>
+                            <select  style="font-size: 16px"  name="sex">
+                                <option value="" style="display:none">性别</option>
+                                <option value="1">男</option>
+                                <option value="2">女</option>
+                            </select>
+                            <select style="font-size: 16px" name="work">
+                                <option value style="display:none">从事过代驾行业</option>
+                                <option value="1">是</option>
+                                <option value="2">否</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="space-row">
+                        <div>
+                            <select class="select-left" style="font-size: 16px"  name="drive_time">
+                                <option value style="display:none">驾龄</option>
+                                <option value="1">1年</option>
+                                <option value="2">2年</option>
+                                <option value="3">3年</option>
+                                <option value="4">4年</option>
+                                <option value="5">5年</option>
+                                <option value="6">6年</option>
+                                <option value="7">7年</option>
+                                <option value="8">8年</option>
+                                <option value="9">9年</option>
+                                <option value="10">10年</option>
+                            </select>
+                            <select class="select-left" style="font-size: 16px" name="work_time">
+                                <option value style="display:none">工作时段</option>
+                                <option value="1">白天</option>
+                                <option value="2">晚上</option>
+                                <option value="3">全天</option>
+                            </select>
+                            <input class="input-type1" type="text" name="licence_num"  placeholder="请输入驾驶证编号">
+                        </div>
+                    </div>
+                    <div class="space-row">
+                        <select class="select-right" style="font-size: 16px" name="driver_type">
+                            <option value style="display:none">准驾类型</option>
+                            <option value="c1">C1</option>
+                            <option value="c2">C2</option>
+                            <option value="c3">C3</option>
+                            <option value="b1">B1</option>
+                            <option value="b2">B2</option>
+                            <option value="a1">A1</option>
+                            <option value="a2">A2</option>
+                            <option value="a3">A3</option>
+                        </select>
+                        <input class="input-type2" type="text" id="idcard"  name="IdCard" placeholder="请输入身份证号">
+                    </div>
+                   <!-- <div class="space-row">
+                        <div class="layui-form-item">
+                            <div class="layui-input-inline">
+                                <button type="button" class="layui-btn upload-image" name="image[]" up-field="path" up-url="/upload/image">
+                                    <i class="layui-icon"></i>上传身份证图片
+                                </button>
+                                <input type="hidden" value="" id="url-img1" name="Business_License_Side">
+                            </div>
+                            <div class="upload-show"></div>
+                        </div>
+                    </div>-->
+                    <button class="btn-ljtj" type="submit" onclick="return validate()">
+                        <img src="/images/btn-ljtj.png" alt="">
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="/common/footer :: foot"></div>
+
+
+<script th:replace="/common/template :: script"></script>
+
+<script th:src="@{/js/plugins/jquery-3.3.1.min.js}" charset="utf-8"></script>
+<script th:src="@{/lib/layui-v2.3.0/layui.js}"></script>
+<script>
+
+    $(function () {
+        $("#href-second").css("color","#00B83F")
+    });
+
+    //验证名称
+    function isChinaName(name) {
+        var pattern = /^[\u4E00-\u9FA5]{1,6}$/;
+        return pattern.test(name);
+    }
+
+    // 验证手机号
+    function isPhoneNo(phonenum) {
+        var pattern = /^[1][3,4,5,7,8][0-9]{9}$/;
+        return pattern.test(phonenum);
+    }
+
+    // 验证身份证
+    function isCardNo(card) {
+        var pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        return pattern.test(card);
+    }
+
+    function validate() {
+        if(isChinaName($.trim($('#name').val())) == false){
+            alert("用户名为空或者不合法");
+            $('#name').focus();
+            return false;
+        }else if(isCardNo($.trim($('#idcard').val())) == false){
+            alert("身份证号不正确");
+            $('#idcard').focus();
+            return false;
+        }else if(isPhoneNo($.trim($('#phonenum').val()) == false)){
+            alert("手机号不正确");
+            $('#phonenum').focus();
+            return false;
+        } else {
+            alert("报名成功");
+            return true;
+        }
+
+    }
+
+</script>
+
+
+</body>
+</html>
+

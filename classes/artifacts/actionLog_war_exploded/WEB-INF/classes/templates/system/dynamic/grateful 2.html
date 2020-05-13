@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*个人css*/
+        .about-banner {
+            background: #1ab11a;
+            overflow: hidden;
+        }
+
+        .about-banner img {
+            margin: 20px auto 0;
+            display: block;
+        }
+
+        .dynamic-content{
+            background-color: #FFFFFF;
+            padding: 18px;
+        }
+
+        .dynamic-main{
+            width: 80%;
+            height: 1280px;
+            border: 1px solid #e4e4e4;
+            margin: 20px 10% 0 10%;
+        }
+
+        .ui-taps{
+            height: 56px;
+            border-bottom: 1px solid #e4e4e4;
+        }
+
+        .ui-tap {
+            font-size: 14px;
+            width: 122px;
+            cursor: pointer;
+            color: #8d8d8d;
+            text-align: center;
+            line-height: 56px;
+            border-right: 1px solid #e4e4e4;
+            border-top: 3.5px solid #08b548;
+        }
+
+        .title{
+            width: 100%;
+            height: 55px;
+            line-height: 50px;
+            font-weight: bold;
+            font-size: 24px;
+            border-bottom: 1px solid #ebebeb;
+        }
+
+        .main{
+            padding: 40px 10px;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        p{
+            text-indent: 2em;
+        }
+
+        .main span{
+            color: deepskyblue;
+        }
+
+        .title-bold{
+            font-weight: bold;
+        }
+
+
+
+    </style>
+</head>
+<body class="dynamic-content">
+<div th:replace="/common/footer :: head"></div>
+<div th:replace="/common/dynamichead :: dynamicheader"></div>
+<div class="dynamic-main">
+    <div class="ui-taps">
+        <div class="ui-tap">
+            久候代驾动态
+        </div>
+    </div>
+    <h1 class="title">
+        疫情对中国网约车行业的影响
+    </h1>
+    <div class="main">
+        <p>中国出租车行业内涉及出租车（巡游车）公司、网约车平台公司、<span>网约车</span>线下运营服务公司、一线驾驶员从
+            业者，以及为之配套服务的金融和其他服务商等。在出租车业内（巡游车、网约车）大板块项下涉及细分领域
+            众多，不同领域从其服务类型（客运、城际、顺风车），资产结构（重资产、轻资产），竞争程度（市场化、
+            相对垄断）及业务范围（地区本地化、全国性运营、B端、C端）等的差异来看，出租车业内的巡游车及网约车
+            拥有截然不同的特征，因此，本次疫情对网约车板块的影响不能与出租车一概而论，疫情对不同业态主题所带
+            来的影响程度、层面及周期将有所不同。</p>
+        <p><img class="safe-img" src="/images/grateful.jpg" alt=""></p>
+        <p>网约车板块：整体影响较大，主要体现在对业务的短中期冲击及对持续运营安全的管理压力上。</p>
+        <p class="title-bold">(一) 网约车业态的基本状况</p>
+        <p>国务院新闻办于2019年12月27日举行新闻发布会，交通运输部运输服务司副司长蔡团结介绍国内已有150多家网约车平台公司获得了经营许可，车辆运输证发放了86万张，驾驶员证发放了185万张，网约车存量市场供给趋于稳定充足。</p>
+        <p> 以国内最大、一站式网约车出行平台公司滴滴出行为例：旗下国内共拥有3143家合作的线下网约车运营服务公司。加上与美团打车、首汽约车、曹操出行、神州专车等网约车平台公司合作的线下运营服务公司在内，预计目前国内的中小型网约车线下运营服务公司超5000家。</p>
+        <p>在网约车运营的热门城市或一线城市中，诸如广州、深圳、厦门、南京、杭州等地，网约车合规运营总车辆数已经超过当地传统出租车总量的2.5-3倍以上；已获取网约车从业资格证的人数是当地出租车从业人数的5倍以上。网约车新兴市场带给当地汽车消费所贡献GDP总量接近百亿元，放眼全国，网约车存量市场超四千亿水平。</p>
+        <p class="title-bold">(二) 疫情期间网约车行业的运营情况</p>
+        <p> 疫情短期内抑制消费者出行需求，对既有客流订单流量及中小型企业利润产生巨大冲击：</p>
+        <p>伴随疫情发展，政府对全国交通管制的强化，居民出行意愿下滑，各地复工申请困难，全国超50个城市发布网约车停运要求，即便非停运城市的网约车城市总订单量较1月20日相比不足10%，市级网约车出勤率亦只占到1月20日前的10%，网约车专、兼职驾驶员在特大城市、省会城市仍坚持抗疫一线的每日运营流水总额不足1月20日前的30%，人均收入在150元以下。</p>
+        <p> 截止2月17日，因各地口罩的紧缺及统配采取摇号等原因，全国网约车线下运营服务公司无法满足复工审批条件的总量，占到全行业的95%以上。</p>
+        <p>各地因为网约车停运或客流停滞，造成大量驾驶员向各网约车线下运营服务公司申请退车的事态，并以资产结构是经营性车辆租赁为主的网约车线下运营服务公司受冲击最大。</p>
+        <p>很多网约车线下运营服务企业反映，如果银行及金融公司能贷款展期4-6个月，方能救助并度过本次难关。</p>
+        <p class="title-bold">(三) 疫情对行业的影响</p>
+        <p>在运营层面上，网约车公共服务属性强且人流密集，疫情释放出更大的安全管理压力：</p>
+        <p>因此，在本次疫情的影响下，网约车中小企业因复工、订单压力、退车潮、车辆保险延期、车辆融租贷款展期等因素，都可能传导至网约车线下服务配套的上游金融供给侧一方，进而可能对相关企业在财务层面形成现金流压力。个体运力虽然普遍与平台公司采取现金结算的方式，但受潜在客源减少的影响，可能短期内的生存压力增加。</p>
+    </div>
+</div>
+<br><br><br>
+
+<div th:replace="/common/footer :: foot"></div>
+
+
+<script th:replace="/common/template :: script"></script>
+<script th:src="@{/js/plugins/jquery-3.3.1.min.js}" charset="utf-8"></script>
+<script th:src="@{/js/plugins/jquery-3.3.1.min.js}" charset="utf-8"></script>
+<script>
+    $(function () {
+        $("#href-four").css("color","#00B83F")
+    });
+</script>
+</body>
+</html>

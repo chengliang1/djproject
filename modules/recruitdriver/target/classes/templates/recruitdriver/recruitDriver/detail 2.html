@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+</head>
+<body>
+    <div class="timo-detail-page">
+        <div class="timo-detail-title">基本信息</div>
+        <table class="layui-table timo-detail-table">
+            <colgroup>
+                <col width="100px"><col>
+                <col width="100px"><col>
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th>主键ID</th>
+                    <td th:text="${recruitDriver.id}"></td>
+                    <th>司机姓名</th>
+                    <td th:text="${recruitDriver.drivername}"></td>
+                </tr>
+                <tr>
+                    <th>身份证号</th>
+                    <td th:text="${recruitDriver.IdCard}"></td>
+                    <th>身份证照片</th>
+                    <td th:text="${recruitDriver.IdCard_image}"></td>
+                </tr>
+                <tr>
+                    <th>驾驶证编号</th>
+                    <td th:text="${recruitDriver.licence_num}"></td>
+                    <th>驾驶证图片</th>
+                    <td th:text="${recruitDriver.licence_image}"></td>
+                </tr>
+                <tr>
+                    <th>联系电话</th>
+                    <td th:text="${recruitDriver.phone}"></td>
+                    <th>性别</th>
+                    <td th:text="${#dicts.keyValue('USER_SEX',recruitDriver.sex)}"></td>
+                </tr>
+                <tr>
+                    <th>驾龄</th>
+                    <td th:text="${recruitDriver.drive_time}"></td>
+                    <th>是否从事过代驾行业</th>
+                    <td th:text="${#dicts.keyValue('WORK',recruitDriver.work)}"></td>
+                </tr>
+                <tr>
+                    <th>工作时段</th>
+                    <td th:text="${#dicts.keyValue('WORK_TIME',recruitDriver.work_time)}"></td>
+                    <th>准驾类型</th>
+                    <td th:text="${recruitDriver.driver_type}"></td>
+                </tr>
+                <tr>
+                    <th>申请状态</th>
+                    <td th:text="${#dicts.keyValue('RECRUIT',recruitDriver.recruit_status)}"></td>
+                    <th>申请时间</th>
+                    <td th:text="${#dates.format(recruitDriver.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<script th:replace="/common/template :: script"></script>
+</body>
+</html>

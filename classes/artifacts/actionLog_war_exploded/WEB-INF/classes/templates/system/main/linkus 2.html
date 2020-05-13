@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*个人css*/
+        .contact-main{
+            border: solid 1px #e4e4e4;;
+            border-radius: 10px;
+            background-color: #FFFFFF;
+            margin-top: 23px;
+        }
+
+        .contact-main .up{
+            padding-left: 60px;
+            height: 278px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-main .up .tit{
+            height: 60px;
+            margin: 90px 0 10px;
+        }
+
+        .contact-main .up .tit > span{
+            float: left;
+            color: #000;
+            font-size: 25px;
+            margin-top: 16px;
+        }
+
+        .hotline{
+            float: left;
+            border-left: solid 1px #08b548;
+            padding-left: 10px;
+            margin-left: 7px;
+            margin-top: 17px;
+            color: #8d8d8d;
+            font-size: 12px;
+            height: 29px;
+            overflow: visible;
+        }
+
+        .hotline > [am-text=gray] {
+            font-size: 12px;
+            margin-top: -3px;
+        }
+
+        .hotline > [am-text=primary] {
+            font-size: 18px;
+            color: #08b548;
+        }
+
+        .contact-main .up .txt {
+            color: #8d8d8d;
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+        .contact-main .up .telephonist {
+            position: absolute;
+            bottom: 0;
+            right: 130px;
+        }
+
+        .contact-main .down > img {
+            float: right;
+            margin-right: 60px;
+            border-radius: 10px;
+        }
+
+        .contact-main .down {
+            padding: 25px 0 65px 60px;
+            border-top: solid 1px #e4e4e4;
+        }
+
+        .contact-main .down .blocks {
+            width: 725px;
+            font-size: 0;
+            height: 311px;
+            overflow: hidden;
+        }
+
+        .contact-main .down .blocks .block {
+            display: inline-block;
+            width: 50%;
+            font-size: 14px;
+            margin: 10px 0 31px;
+        }
+
+        .contact-main .down .blocks .block > img {
+            vertical-align: middle;
+            margin-right: 12px;
+        }
+
+        .contact-main .down .blocks .block .cont {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 20px;
+        }
+
+        .contact-main .down .blocks .block .cont .tit {
+            color: #000;
+            font-size: 16px;
+            line-height: 26px;
+        }
+
+        .contact-main .down .blocks .block .cont .txt {
+            font-size: 14px;
+            color: #8d8d8d;
+        }
+
+
+
+
+    </style>
+</head>
+<body class="timo-layout-page">
+<div th:replace="/common/footer :: head"></div>
+<div class="contact-main">
+    <div class="up">
+        <div class="tit">
+            <span>联系久候代驾</span>
+            <div class="hotline">
+                <div am-text="gray">24小时服务热线</div>
+                <div am-text="primary">400-800-1086</div>
+            </div>
+        </div>
+        <div class="txt">
+            需要帮助可直接拨打我们400热线
+            <br>
+            也可以拨打列表下的电话，寻求你需要的服务，欢迎你的来电
+        </div>
+        <img class="telephonist" src="../images/telephonist.png" alt="久候代驾客服热线">
+    </div>
+    <div class="down">
+        <img src="../images/contact-map.png" alt="久候代驾司机热线">
+        <div class="blocks">
+            <div class="block">
+                <img src="../images/contact-truck.png" alt="加盟久候代驾">
+                <div class="cont">
+                    <div class="tit">司机热线</div>
+                    <div class="txt">
+                        招聘热线： 4008-333-999-1
+                        <br>
+                        问题处理： 4008-333-999-2
+                    </div>
+                </div>
+            </div>
+            <div class="block">
+                <img src="../images/contact-mail.png">
+                <div class="cont">
+                    <div class="tit">投诉建议</div>
+                    <div class="txt">
+                        邮件：ideas@jiuhoudaijia.com
+                    </div>
+                </div>
+            </div>
+            <div class="block">
+                <img src="../images/contact-earth.png" alt="与久候代驾合作">
+                <div class="cont">
+                    <div class="tit">加盟久候代驾</div>
+                    <div class="txt">
+                        邮件：jiameng@jiuhoudaijia.com
+                        <br>
+                        加盟热线：021-31300898
+                    </div>
+                </div>
+            </div>
+            <div class="block">
+                <img src="../images/contact-coorp.png" alt="久候代驾企业合作热线">
+                <div class="cont">
+                    <div class="tit">企业代驾合作</div>
+                    <div class="txt">
+                        电话：021-31300898
+                        <br>
+                        邮箱：market@jiuhoudaijia.com
+                    </div>
+                </div>
+            </div>
+            <div class="block">
+                <img src="../images/contact-computer.png" alt="久候代驾滁州总部地址">
+                <div class="cont">
+                    <div class="tit">媒体与市场合作</div>
+                    <div class="txt">
+                        邮件：market@jiuhoudaijia.com
+                        <br>
+                        合作洽谈：021-31300898
+                    </div>
+                </div>
+            </div>
+            <div class="block">
+                <img src="../images/contact-truck.png" alt="久候代驾滁州总部代驾">
+                <div class="cont">
+                    <div class="tit">滁州总部</div>
+                    <div class="txt">
+                        电话：021-60732029
+                        <br>
+                        邮编：239000
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="/common/footer :: foot"></div>
+
+<script th:replace="/common/template :: script"></script>
+
+<script th:src="@{/js/plugins/jquery-3.3.1.min.js}" charset="utf-8"></script>
+<script>
+    $(function () {
+        $("#href-five").css("color","#00B83F")
+    });
+</script>
+</body>
+</html>
+

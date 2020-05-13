@@ -33,7 +33,7 @@ public class Floyd {
                     path[i][j] = -1;
             }
         }
-        //算法开始喽！基本就是暴力解决
+        //算法开始
         for(int k = 0; k < matrixOrder; k++){
             for(int i = 0; i< matrixOrder; i++){
                 for (int j = 0; j < matrixOrder; j++){

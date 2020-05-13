@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/common/template :: header(~{::title},~{::link},~{::style})">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*个人css*/
+        .about-banner {
+            background: #1ab11a;
+            overflow: hidden;
+        }
+
+        .about-banner img {
+            margin: 20px auto 0;
+            display: block;
+        }
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <div th:fragment="dynamicheader" class="about-banner">
+        <img src="../images/about-banner.png" alt="">
+    </div>
+<script th:replace="/common/template :: script"></script>
+
+</body>
+</html>
